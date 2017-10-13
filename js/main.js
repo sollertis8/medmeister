@@ -1,29 +1,36 @@
 //const BETTER_DOCTOR_API = 'https://api.betterdoctor.com/2016-03-01/doctors';
 
-$(document).ready(function() {
-    
-    new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
-        console.log( "ready!" );
+$(document).ready(function () {
+    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
+    console.log("ready!");
+    getUserLocation();
+    $(watchSubmit);
+});
+
+// const crypto = require('crypto');
+
+// const generate_key = function() {
+//     const sha = crypto.createHash('sha256');
+//     sha.update(Math.random().toString());
+//     return sha.digest('hex');
+// };
+// initialize google maps
+function initMap(latitude, longitude) {
+    var uluru = {
+        lat: parseInt(latitude),
+        lng: parseInt(longitude)
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6,
+        center: uluru
     });
-
-
-// function initMap(latitude, longitude) {
-//     var uluru = {
-//         lat: latitude,
-//         lng: longitude
-//     };
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 4,
-//         center: uluru
-//     });
-//     var marker = new google.maps.Marker({
-//         position: uluru,
-//         map: map
-//     });
-//${initMap(result.practices[0].lat, result.practices[0].lon)}
-
-// }
-
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
+    // ${initMap(result.practices[0].lat, result.practices[0].lon)}
+}
+// get data from API and limit results
 function getDataFromApi(location, callback) {
 
     const settings = {
@@ -39,28 +46,19 @@ function getDataFromApi(location, callback) {
         success: callback
     };
     $.ajax(settings)
-
 }
-
-
-
+// gets user location
+function getUserLocation() {
+    $.get("https://ipinfo.io", function (response) {
+        result = response.loc;
+        var values = result.split(',');
+        lat = values[0];
+        long = values[1];
+        initMap(lat, long);
+    }, "jsonp")
+}
+// renders results to user
 function renderResult(result) {
-
-    // const MapLocation = [{
-    //     lat: result.practices[0].lat,
-    //     lon: result.practices[0].lon,
-    //     title: 'Title A1',
-    //     html: '<h3>Content A1</h3>',
-    //     icon: 'http://maps.google.com/mapfiles/markerA.png',
-    //     // animation: google.maps.Animation.DROP
-    // }];
-    // $(function () {
-    //     new Maplace({
-    //         locations: MapLocation,
-    //         controls_on_map: false
-    //     }).Load();
-    // });
-
     $('.js-search-results').show();
     $('.bio').shorten();
     return `
@@ -140,14 +138,14 @@ function renderResult(result) {
 </div> <!-- end card-container -->
     `;
 }
-
+// parses API response data
 function displayResponseData(response) {
     const results = response.data.map((item, index) => renderResult(item));
     $('.js-search-results').html(results);
     renderResult(results);
     console.log("displayResponseData ran");
 }
-
+// listen's for form submission
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
@@ -159,6 +157,3 @@ function watchSubmit() {
     });
 }
 
-
-
-$(watchSubmit);
