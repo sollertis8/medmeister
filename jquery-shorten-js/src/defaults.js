@@ -1,7 +1,7 @@
 export default {
   namespace: 'shorten',
-  chars: 100,
+  chars: 200,
   ellipses: '...',
-  more: 'more',
+  more: '',
   less: 'less'
 };

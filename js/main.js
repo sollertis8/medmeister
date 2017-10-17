@@ -1,10 +1,36 @@
 //const BETTER_DOCTOR_API = 'https://api.betterdoctor.com/2016-03-01/doctors';
-
+// var map;
 $(document).ready(function () {
-    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
+    // new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
     console.log("ready!");
-    getUserLocation();
+    // $('navbar-header').hide();
+    // initMap(47.6145, -122.3418);
+    // getUserLocation();
+    getSpecialties(displaySpecialtyResponse);
+    // setTimeout(getInsurances(displayInsurancesResponse), 5000);
+    // getInsurances(displayInsurancesResponse);
     $(watchSubmit);
+    // setTimeout(getInsurances(callback), 600)
+    $(generateDoctorProfile);
+});
+
+$(this).delay(1000).queue(function () {
+    function getInsurances(callback) {
+        const settings = {
+            data: {
+                skip: '0',
+                limit: '',
+                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+            },
+            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
+            dataType: 'json',
+            type: 'GET',
+            success: callback
+        };
+        $.ajax(settings)
+    }
+    $(this).dequeue();
+    getInsurances(displayInsurancesResponse);
 });
 
 // const crypto = require('crypto');
@@ -15,26 +41,63 @@ $(document).ready(function () {
 //     return sha.digest('hex');
 // };
 // initialize google maps
-function initMap(latitude, longitude) {
-    var uluru = {
-        lat: parseInt(latitude),
-        lng: parseInt(longitude)
-    };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
-        center: uluru
-    });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });
-    // ${initMap(result.practices[0].lat, result.practices[0].lon)}
-}
-// get data from API and limit results
-function getDataFromApi(location, callback) {
 
+var map;
+// var pos;
+
+function initMap() {
+    var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
+    map = new google.maps.Map($("#map")[0], {
+        center: mapCenter,
+        zoom: 8
+    });
+}
+
+
+
+if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        // infoWindow = new google.maps.InfoWindow({map: map});
+        pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
+        // map.panTo(pos);
+        console.log(pos);
+    });
+} else {
+    console.log("Browser doesn't support geolocation!");
+}
+
+
+// function initMap(latitude, longitude) {
+//     var uluru = {
+//         lat: parseInt(latitude),
+//         lng: parseInt(longitude)
+//     };
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 8,
+//         center: uluru
+//     });
+//     var marker = new google.maps.Marker({
+//         position: uluru,
+//         map: map
+//     });
+
+//     // ${initMap(result.practices[0].lat, result.practices[0].lon)}
+
+// }
+
+
+// get data from API and limit results
+function getDataFromApi(specialty, insurance, user_location, location, callback) {
     const settings = {
         data: {
+            specialty_uid: `${specialty}`,
+            insurance_uid: `${insurance}`,
+            user_location: `${user_location}`,
             location: `${location}`,
             skip: '2',
             limit: '12',
@@ -47,20 +110,47 @@ function getDataFromApi(location, callback) {
     };
     $.ajax(settings)
 }
-// gets user location
-function getUserLocation() {
-    $.get("https://ipinfo.io", function (response) {
-        result = response.loc;
-        var values = result.split(',');
-        lat = values[0];
-        long = values[1];
-        initMap(lat, long);
-    }, "jsonp")
+
+function getSpecialties(callback) {
+    const settings = {
+        data: {
+            skip: '0',
+            limit: '',
+            fields: 'uid,name',
+            user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+        },
+        url: 'https://api.betterdoctor.com/2016-03-01/specialties',
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+    };
+    $.ajax(settings)
 }
+
+function getDoctor(uid, callback) {
+    const settings = {
+        data: {
+            user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+        },
+        url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+    };
+    $.ajax(settings)
+}
+
 // renders results to user
 function renderResult(result) {
     $('.js-search-results').show();
     $('.bio').shorten();
+    // data = [];
+    // first_name = result.profile.first_name;
+    // last_name = result.profile.last_name;
+    // title = result.profile.title;
+    // bio =  result.profile.bio;
+    // data = [first_name,last_name,title,bio];
+
     return `
         <div class="col-sm-4">
     <div class="card-container">
@@ -77,7 +167,8 @@ function renderResult(result) {
                     <h3 class="name">${result.profile.first_name} ${result.profile.last_name}, ${result.profile.title}</h3>
                     <p class="profession">${result.practices[0].name}</p>
 
-                    <p class="text-center">${result.specialties[0].description}</p>
+                    <p class="text-center">${result.specialties[0].name}</p>
+                    <p class="text-center"><div class="distance">${Math.round(result.practices[0].distance)} miles from you</div></p> 
                 </div>
                 <div class="footer">
                     <div class="rating">
@@ -93,44 +184,20 @@ function renderResult(result) {
             <div class="content">
                 <div class="main">
                     <h4 class="text-center">Bio</h4>
-                    <p class="text-center"><div class="bio">${result.profile.bio}</div></p>
-                    <div class="map" id="map">
-                    
-                    </div>
-                    <div class="stats-container">
-                        <div class="stats">
-                            <h4></h4>
-                            <p>
-                            <a href="">
-                            <span class="glyphicon glyphicon-earphone"></span> Contact
-                          </a>
-                            </p>
-                        </div>
-                        <div class="stats">
-                            <h4></h4>
-                            <p>
-                            <a href="">
-                            <span class="glyphicon glyphicon-map-marker"></span> View Map
-                            </a>
-                            </p>
-                        </div>
-                        <div class="stats">
-                            <h4></h4>
-                            <p>
-                            <a href="">
-                            <span class="glyphicon glyphicon-circle-arrow-right"></span> More
-                            </a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+                    <p class="text-center"><div class="bio">${result.profile.bio}</div></p> 
             <div class="footer">
                 <div class="social-links text-center">
-                    <a href="#" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                    <a href="#" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                    <a href="#" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                    <a href="javascript:void(0)" class="more js-more" 
+                    profile_image="${result.profile.image_url} "firstname="${result.profile.first_name}" 
+                    lastname="${result.profile.last_name}" profile_title="${result.profile.title}" 
+                    bio="${result.profile.bio}" license_state="${result.licenses[0].state}" 
+                    specialties_description="${result.specialties[0].description}" practice="${result.practices[0].name}"
+                    address="${result.practices[0].visit_address.street}" 
+                    address2="${result.practices[0].visit_address.street2}"
+                    city="${result.practices[0].visit_address.city}"
+                    state="${result.practices[0].visit_address.state}"
+                    zip="${result.practices[0].visit_address.zip}"
+                    contact="${result.practices[0].phones[0].number}" >View More</a>
                 </div>
             </div>
         </div> <!-- end back panel -->
@@ -138,22 +205,113 @@ function renderResult(result) {
 </div> <!-- end card-container -->
     `;
 }
-// parses API response data
+
+function renderSpecialtyDropdown(result) {
+    return `
+    <option value="${result.uid}">${result.name}</option>
+    `;
+}
+
+function renderInsurancesDropdown(result) {
+    return `
+    <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
+    `;
+}
+
+// parses doctors endpoint response data
 function displayResponseData(response) {
     const results = response.data.map((item, index) => renderResult(item));
     $('.js-search-results').html(results);
     renderResult(results);
-    console.log("displayResponseData ran");
+    console.log('displayResponseData ran');
 }
+
+function displaySpecialtyResponse(response) {
+    const results = response.data.map((item, index) => renderSpecialtyDropdown(item));
+    $('.js-specialty').html(results.sort());
+    renderSpecialtyDropdown(results);
+    console.log('displaySpecialtyResponse ran');
+}
+
+function displayInsurancesResponse(response) {
+    const results = response.data.map((item, index) => renderInsurancesDropdown(item));
+    $('.js-insurance').html(results.sort());
+    renderInsurancesDropdown(results);
+    console.log('displayInsurancesResponse ran');
+}
+
+
+function generateDoctorProfile() {
+    console.log("generateDoctorProfile ran");
+    $('.js-search-results').on('click', '.js-more', function (event) {
+        event.preventDefault();
+        $('.js-search-results').hide();
+        $('.js-profile').show();
+        $('navbar-header').show();
+        const firstname = $(this).attr("firstname");
+        const lastname = $(this).attr("lastname");
+        const image = $(this).attr("profile_image");
+        const title = $(this).attr("profile_title");
+        const practice = $(this).attr("practice");
+        const address = $(this).attr("address");
+        const address2 = $(this).attr("address2");
+        const city = $(this).attr("city");
+        const state = $(this).attr("state");
+        const zip = $(this).attr("zip");
+        const contact = $(this).attr("contact");
+        // const data = [firstname,lastname,image];
+        // getDoctor(uid, displayDoctorProfile);
+        displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip);
+        // console.log(data);
+    });
+}
+
+function displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip) {
+    $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
+    $('.js-profile-name').html(`${firstname} ${lastname}`);
+    $('.js-profile-title').html(`${title}`);
+    $('.js-profile-practice').html(`${practice}`);
+    $('.js-practice-address').html(`${address}`);
+    $('.js-practice-address2').html(`${address2}`);
+    $('.js-practice-city').html(`${city}, `);
+    $('.js-practice-state').html(`${state} `);
+    $('.js-practice-zip').html(`${zip}`);
+    $('.js-profile-contact').html(`${contact}`);
+
+
+    // $('.js-name').html(response);
+    //renderDoctorProfile(response);
+}
+
+function renderDoctorProfile(result) {
+    // console.log(result);
+
+    return `
+
+
+
+`;
+}
+
+
 // listen's for form submission
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
-        const target = $(event.currentTarget).find('.js-location');
-        const query = (target.val());
-        target.val("");
-        getDataFromApi(query, displayResponseData);
-        console.log("watchSubmit ran");
+        const specialty_target = $(event.currentTarget).find('.js-specialty');
+        const specialty = (specialty_target.val());
+        const insurance_target = $(event.currentTarget).find('.js-insurance');
+        const insurance = (insurance_target.val());
+        const user_location = JSON.stringify(pos).replace(/[^0-9\-,.]/g, '');
+        const range_target = $(event.currentTarget).find('.js-range');
+        const range_target_value = range_target.val();
+        const range = {
+            user_location,
+            range_target_value
+        };
+        const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
+        // target.val("");
+        getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
+        console.log("watchSubmit ran", range_clean);
     });
 }
-
