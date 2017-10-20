@@ -223,19 +223,142 @@ function renderInsurancesDropdown(result) {
 
 // parses doctors endpoint response data
 function displayResponseData(response) {
+    if (response.data.length == 0) {
+        $('.js-search-results').html("No results, search again...");
+        return    
+    }
+
     const results = response.data.map((item, index) => {
-        item = normalizeResultData(item)
-        renderResult(item)
+        return renderResult(normalizeResultData(item))
     })
     $('.js-search-results').html(results);
-    renderResult(results);
-    console.log('displayResponseData ran');
 }
 
+/**
+ * Populates each from API response for doctor data:
+ * profile
+ * practices
+ * insurances
+ * specialties
+ * licenses
+ * 
+ * @param {object} data 
+ */
 function normalizeResultData(data)
 {
-    let obj = data
+    let obj = {
+        profile: getProfileFromDoctorData(data),
+        practices: getPracticesFromDoctorData(data),
+        insurances: getInsurancesFromDoctorData(data),
+        specialties: getSpecialtiesFromDoctorData(data),
+        licenses: getLicensesFromDoctorData(data)
+    }
+    console.log(obj)
     return obj
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ */
+function getProfileFromDoctorData(data)
+{
+    // assume each object has a .profile element
+    let profileKeys = Object.keys(data.profile)
+    let profile = {
+        image_url: (profileKeys.includes('image_url') ? data.profile.image_url : ""),
+        first_name: (profileKeys.includes('first_name') ? data.profile.first_name : ""),
+        last_name: (profileKeys.includes('last_name') ? data.profile.last_name : ""),
+        title: (profileKeys.includes('title') ? data.profile.title : ""),
+        bio: (profileKeys.includes('bio') ? data.profile.bio : "")
+    }
+
+    return profile
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ * @returns {array} Array of practices objects
+ */
+function getPracticesFromDoctorData(data)
+{
+    // assume the response has a practices element and that it is an array
+    practices = []
+    data.practices.map(item => {
+        let practiceKeys = Object.keys(item)
+        let practice = {
+            name: (practiceKeys.includes('name') ? item.name : ""),
+            visit_address: getPracticeVisitAddress(item),
+            phones: item.phones,
+            distance: (practiceKeys.includes('distance') ? item.distance : 0)
+        }
+        practices.push(practice)
+    })
+
+    function getPracticeVisitAddress(practice)
+    {
+        // Again, assume, each practice has a 'visit_address' property
+        let visitAddressKeys = Object.keys(practice.visit_address)
+        return {
+            street: (visitAddressKeys.includes('street') ? practice.visit_address.street : ""),
+            street2: (visitAddressKeys.includes('street2') ? practice.visit_address.street2 : ""),
+            city: (visitAddressKeys.includes('city') ? practice.visit_address.city : ""),
+            state: (visitAddressKeys.includes('state') ? practice.visit_address.state : ""),
+            zip: (visitAddressKeys.includes('zip') ? practice.visit_address.zip : "")
+        }
+    }
+
+    return practices
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ */
+function getInsurancesFromDoctorData(data)
+{
+    insurances = []
+    data.insurances.map(item => {
+        insuranceKeys = Object.keys(item)
+        insurances.push({
+            insurance_provider: (insuranceKeys.includes('insurance_provider') ? item.insurance_provider : {name: "Unknown"})
+        })
+    })
+    return insurances
+}
+
+/**
+ * 
+ * @param {object} data 
+ */
+function getSpecialtiesFromDoctorData(data)
+{
+    specialties = []
+    data.specialties.map(item => {
+        speacialtyKeys = Object.keys(item)
+        specialties.push({
+            name: (speacialtyKeys.includes('name') ? item.description : ""),
+            description: (speacialtyKeys.includes('description') ? item.description : "")
+        })
+    })
+    return specialties
+}
+
+/**
+ *
+ * @param {object} data
+ */
+function getLicensesFromDoctorData(data)
+{
+    licenses = []
+    data.licenses.map(item => {
+        licenseKeys = Object.keys(item)
+        licenses.push({
+            state: (licenseKeys.includes('state') ? item.state : "Unknown")
+        })
+    })
+    return specialties
 }
 
 function displaySpecialtyResponse(response) {
