@@ -6,7 +6,7 @@ $(document).ready(function () {
     // $('navbar-header').hide();
     // initMap(47.6145, -122.3418);
     // getUserLocation();
-    getSpecialties(displaySpecialtyResponse);
+    getSpecialties(cleanSpecialtiesData);
     // setTimeout(getInsurances(displayInsurancesResponse), 5000);
     // getInsurances(displayInsurancesResponse);
     $(watchSubmit);
@@ -14,24 +14,7 @@ $(document).ready(function () {
     $(generateDoctorProfile);
 });
 
-$(this).delay(1000).queue(function () {
-    function getInsurances(callback) {
-        const settings = {
-            data: {
-                skip: '0',
-                limit: '',
-                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-            },
-            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
-            dataType: 'json',
-            type: 'GET',
-            success: callback
-        };
-        $.ajax(settings)
-    }
-    $(this).dequeue();
-    getInsurances(displayInsurancesResponse);
-});
+
 
 // const crypto = require('crypto');
 
@@ -111,6 +94,38 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
     $.ajax(settings)
 }
 
+
+$(this).delay(1000).queue(function () {
+    function getInsurances(callback) {
+        const settings = {
+            data: {
+                skip: '0',
+                limit: '',
+                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+            },
+            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
+            dataType: 'json',
+            type: 'GET',
+            success: callback
+        };
+        $.ajax(settings)
+    }
+    $(this).dequeue();
+    getInsurances(cleanInsurancesData);
+});
+
+function cleanInsurancesData(data) {
+    const clean_data = [];
+    for (i = 0; i < data.length; i++) {
+        if (data[i] != null) {
+            clean_data.push(data[i]);
+        }
+    }
+    console.log(data);
+    console.log(clean_data);
+    displayInsurancesResponse(clean_data);
+}
+
 function getSpecialties(callback) {
     const settings = {
         data: {
@@ -127,18 +142,32 @@ function getSpecialties(callback) {
     $.ajax(settings)
 }
 
-function getDoctor(uid, callback) {
-    const settings = {
-        data: {
-            user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-        },
-        url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
-        dataType: 'json',
-        type: 'GET',
-        success: callback
-    };
-    $.ajax(settings)
+function cleanSpecialtiesData(response) {
+    const clean_data = {};
+    // json_data = JSON.stringify(data);
+    for (i = 0; i < response.length; i++) {
+        if (response[i] != null) {
+            clean_data.push(json_data);
+        }
+    }
+    // console.log(data);
+    // console.log(clean_data);
+    console.log(json_data);
+    displaySpecialtyResponse(clean_data);
 }
+
+// function getDoctor(uid, callback) {
+//     const settings = {
+//         data: {
+//             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+//         },
+//         url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
+//         dataType: 'json',
+//         type: 'GET',
+//         success: callback
+//     };
+//     $.ajax(settings)
+// }
 
 // renders results to user
 function renderResult(result) {
@@ -209,35 +238,49 @@ function renderResult(result) {
     `;
 }
 
-function renderSpecialtyDropdown(result) {
+function generateSpecialtyOptionElement(result) {
     return `
     <option value="${result.uid}">${result.name}</option>
     `;
 }
 
-function renderInsurancesDropdown(result) {
+function generateInsuranceOptionElement(result) {
     return `
     <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
     `;
 }
 
-// parses doctors endpoint response data
-function displayResponseData(response) {
-    const results = response.data.map((item, index) => renderResult(item));
-    $('.js-search-results').html(results);
-    renderResult(results);
-    console.log('displayResponseData ran');
+function cleanApiResults(data) {
+    const clean_data = [];
+    for (i = 0; i < data.length; i++) {
+        if (data[i] != null) {
+            clean_data.push(data[i]);
+        }
+    }
+    displayResponseData(clean_data);
 }
 
-function displaySpecialtyResponse(response) {
+// parses doctors endpoint response data
+function displayResponseData(response) {
     const results = response.data.map((item, index) => renderSpecialtyDropdown(item));
     $('.js-specialty').html(results.sort());
     renderSpecialtyDropdown(results);
     console.log('displaySpecialtyResponse ran');
+    }
+
+
+
+
+function displaySpecialtyResponse(response) {
+    console.log(response);
+    const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
+    $('.js-specialty').html(results.sort());
+    generateSpecialtyOptionElement(results);
+    console.log('displaySpecialtyResponse ran');
 }
 
 function displayInsurancesResponse(response) {
-    const results = response.data.map((item, index) => renderInsurancesDropdown(item));
+    const results = response.data.map((item, index) => generateInsuranceOptionElement(item));
     $('.js-insurance').html(results.sort());
     console.log('displayInsurancesResponse ran');
 }
@@ -301,9 +344,9 @@ function openTab(tabName) {
     var i;
     var x = document.getElementsByClassName("profile-tab");
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
+        x[i].style.display = "none";
     }
-    document.getElementById(tabName).style.display = "block"; 
+    document.getElementById(tabName).style.display = "block";
 }
 
 
@@ -324,7 +367,7 @@ function watchSubmit() {
         };
         const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
         // target.val("");
-        getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
+        getDataFromApi(specialty, insurance, user_location, range_clean, cleanApiResults);
         console.log("watchSubmit ran", range_clean);
     });
 }
