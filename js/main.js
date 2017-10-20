@@ -142,18 +142,8 @@ function getSpecialties(callback) {
     $.ajax(settings)
 }
 
-function cleanSpecialtiesData(data) {
-    const clean_data = [];
-    json_data = JSON.stringify(data);
-    for (i = 0; i < json_data.length; i++) {
-        if (json_data[i] != null) {
-            clean_data.push(json_data);
-        }
-    }
-    // console.log(data);
-    // console.log(clean_data);
-    console.log(json_data);
-    displaySpecialtyResponse(clean_data);
+function cleanSpecialtiesData(response) {
+    displaySpecialtyResponse(response.data);
 }
 
 // function getDoctor(uid, callback) {
@@ -268,9 +258,8 @@ function displayResponseData(response) {
     console.log('displayResponseData ran');
 }
 
-function displaySpecialtyResponse(response) {
-    console.log(response);
-    const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
+function displaySpecialtyResponse(data) {
+    const results = data.map((item, index) => generateSpecialtyOptionElement(item));
     $('.js-specialty').html(results.sort());
     generateSpecialtyOptionElement(results);
     console.log('displaySpecialtyResponse ran');
