@@ -141,16 +141,7 @@ function getDoctor(uid, callback) {
 }
 
 // renders results to user
-function renderResult(result) {
-    $('.js-search-results').show();
-    $('.bio').shorten();
-    // data = [];
-    // first_name = result.profile.first_name;
-    // last_name = result.profile.last_name;
-    // title = result.profile.title;
-    // bio =  result.profile.bio;
-    // data = [first_name,last_name,title,bio];
-
+function getDoctorHtmlString(result) {
     return `
         <div class="col-sm-4">
     <div class="card-container">
@@ -229,9 +220,11 @@ function displayResponseData(response) {
     }
 
     const results = response.data.map((item, index) => {
-        return renderResult(normalizeResultData(item))
+        return getDoctorHtmlString(normalizeResultData(item))
     })
     $('.js-search-results').html(results);
+    $('.js-search-results').show();
+    $('.bio').shorten();
 }
 
 /**
