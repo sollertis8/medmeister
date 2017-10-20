@@ -223,10 +223,19 @@ function renderInsurancesDropdown(result) {
 
 // parses doctors endpoint response data
 function displayResponseData(response) {
-    const results = response.data.map((item, index) => renderResult(item));
+    const results = response.data.map((item, index) => {
+        item = normalizeResultData(item)
+        renderResult(item)
+    })
     $('.js-search-results').html(results);
     renderResult(results);
     console.log('displayResponseData ran');
+}
+
+function normalizeResultData(data)
+{
+    let obj = data
+    return obj
 }
 
 function displaySpecialtyResponse(response) {
@@ -241,7 +250,6 @@ function displayInsurancesResponse(response) {
     $('.js-insurance').html(results.sort());
     console.log('displayInsurancesResponse ran');
 }
-
 
 function generateDoctorProfile() {
     console.log("generateDoctorProfile ran");
