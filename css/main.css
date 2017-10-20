@@ -101,6 +101,10 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    text-align: center;
+}
+
 button {
     color: #000000 !important;
 }
@@ -180,6 +184,7 @@ body {
 }
 
 .profile-image {
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -246,4 +251,54 @@ label {
 .glyphicon {
     position: absolute !important;
     left: 20px !important;
+}
+
+.modal {
+    background-color: rgba(58, 63, 81, .5) !important;
+ }
+
+.main-profile-content{
+    display: inline-block;
+    height: 500px;
+    color: #3a3f51;
+    padding: 20px 20px 20px 220px;
+}
+
+.nav-modal{
+    display: inline-block;
+    width: 100%;
+    background-color: #fafafa;
+    color: #3a3f51;
+    padding: 0px 0px 0px 200px;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+ .profile-bio {
+    text-align: center;
+ }
+
+ .w3-bar .w3-button {
+    white-space: normal;
+    background-color: #fafafa;
+}
+
+.w3-button:hover {
+    background-color: #3a3f51;
+    color: #fafafa !important;
+}
+
+.w3-button:focus{
+    background-color: #3a3f51;
+    color: #fafafa !important;
+}
+
+.w3-bar .w3-bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    outline: none;
+    display: block;
 }

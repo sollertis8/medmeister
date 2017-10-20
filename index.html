@@ -26,7 +26,7 @@
     <!-- Optional theme -->
 
     <!-- Latest compiled and minified JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -50,12 +50,13 @@
         </ul>
     </div>
 
-
-    <navbar-header hidden>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+    <navbar-header>
 
         <ul>
             <!-- <div class= logo><a href="#">Med Meister</a></div> -->
-            <div class="line"></div>
             <section>
                 <div class="profile-image js-profile-image"></div>
                 <div class="profile-name js-profile-name"></div>
@@ -100,6 +101,7 @@
                 <span class="profile-contact js-profile-contact"></span>
             </section>
             <div class="line"></div>
+            
             <!-- <li><a href="#">Home</a></li>
                         <li><a href="#">News</a></li>
                         <li><a href="#">Contact</a></li>
@@ -107,6 +109,33 @@
                         <div class="line"></div> -->
         </ul>
     </navbar-header>
+    <div class="nav-modal">
+         <div class="w3-bar w3-black">
+                    <button class="w3-bar-item w3-button" onclick="openTab('Bio')" autofocus="true">Bio</button>
+                    <button class="w3-bar-item w3-button" onclick="openTab('Insurance_Accepted')">Insurance Accepted</button>
+                    <button class="w3-bar-item w3-button" onclick="openTab('Map')">Map</button>
+                  </div>
+    </div>
+    <div class="main-profile-content">
+           
+            <div id="Bio" class="profile-tab">
+                <h2>Bio</h2>
+                <div class="profile-bio js-profile-bio"></div>
+                  </div>
+                  
+                  <div id="Insurance_Accepted" class="profile-tab" style="display:none">
+                        <div class="profile-insurance js-profile-insurance"></div>
+                  </div>
+                  
+                  <div id="Map" class="profile-tab" style="display:none">
+                    <h2>Map</h2>
+                    <p>Tokyo is the capital of Japan.</p>
+                  </div>
+            
+        </div>
+    </div>
+    </div>
+    </div>
     <div class="container-fluid">
 
 

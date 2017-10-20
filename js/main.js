@@ -6,7 +6,7 @@ $(document).ready(function () {
     // $('navbar-header').hide();
     // initMap(47.6145, -122.3418);
     // getUserLocation();
-    getSpecialties(displaySpecialtyResponse);
+    getSpecialties(cleanSpecialtiesData);
     // setTimeout(getInsurances(displayInsurancesResponse), 5000);
     // getInsurances(displayInsurancesResponse);
     $(watchSubmit);
@@ -14,24 +14,7 @@ $(document).ready(function () {
     $(generateDoctorProfile);
 });
 
-$(this).delay(1000).queue(function () {
-    function getInsurances(callback) {
-        const settings = {
-            data: {
-                skip: '0',
-                limit: '',
-                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-            },
-            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
-            dataType: 'json',
-            type: 'GET',
-            success: callback
-        };
-        $.ajax(settings)
-    }
-    $(this).dequeue();
-    getInsurances(displayInsurancesResponse);
-});
+
 
 // const crypto = require('crypto');
 
@@ -111,6 +94,38 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
     $.ajax(settings)
 }
 
+
+$(this).delay(1000).queue(function () {
+    function getInsurances(callback) {
+        const settings = {
+            data: {
+                skip: '0',
+                limit: '',
+                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+            },
+            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
+            dataType: 'json',
+            type: 'GET',
+            success: callback
+        };
+        $.ajax(settings)
+    }
+    $(this).dequeue();
+    getInsurances(cleanInsurancesData);
+});
+
+function cleanInsurancesData(data) {
+    const clean_data = [];
+    for (i = 0; i < data.length; i++) {
+        if (data[i] != null) {
+            clean_data.push(data[i]);
+        }
+    }
+    console.log(data);
+    console.log(clean_data);
+    displayInsurancesResponse(clean_data);
+}
+
 function getSpecialties(callback) {
     const settings = {
         data: {
@@ -127,18 +142,32 @@ function getSpecialties(callback) {
     $.ajax(settings)
 }
 
-function getDoctor(uid, callback) {
-    const settings = {
-        data: {
-            user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-        },
-        url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
-        dataType: 'json',
-        type: 'GET',
-        success: callback
-    };
-    $.ajax(settings)
+function cleanSpecialtiesData(data) {
+    const clean_data = [];
+    json_data = JSON.stringify(data);
+    for (i = 0; i < json_data.length; i++) {
+        if (json_data[i] != null) {
+            clean_data.push(json_data);
+        }
+    }
+    // console.log(data);
+    // console.log(clean_data);
+    console.log(json_data);
+    displaySpecialtyResponse(clean_data);
 }
+
+// function getDoctor(uid, callback) {
+//     const settings = {
+//         data: {
+//             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+//         },
+//         url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
+//         dataType: 'json',
+//         type: 'GET',
+//         success: callback
+//     };
+//     $.ajax(settings)
+// }
 
 // renders results to user
 function renderResult(result) {
@@ -187,7 +216,7 @@ function renderResult(result) {
                     <p class="text-center"><div class="bio">${result.profile.bio}</div></p> 
             <div class="footer">
                 <div class="social-links text-center">
-                    <a href="javascript:void(0)" class="more js-more" 
+                    <a href="javascript:void(0)" class="more js-more" data-toggle="modal" data-target=".bd-example-modal-lg"
                     profile_image="${result.profile.image_url} "firstname="${result.profile.first_name}" 
                     lastname="${result.profile.last_name}" profile_title="${result.profile.title}" 
                     bio="${result.profile.bio}" license_state="${result.licenses[0].state}" 
@@ -197,7 +226,10 @@ function renderResult(result) {
                     city="${result.practices[0].visit_address.city}"
                     state="${result.practices[0].visit_address.state}"
                     zip="${result.practices[0].visit_address.zip}"
-                    contact="${result.practices[0].phones[0].number}" >View More</a>
+                    contact="${result.practices[0].phones[0].number}" 
+                    profile_bio="${result.profile.bio}"
+                    profile_insurance="${result.insurances[0].insurance_provider.name}
+                    ">View More</a>
                 </div>
             </div>
         </div> <!-- end back panel -->
@@ -206,16 +238,26 @@ function renderResult(result) {
     `;
 }
 
-function renderSpecialtyDropdown(result) {
+function generateSpecialtyOptionElement(result) {
     return `
     <option value="${result.uid}">${result.name}</option>
     `;
 }
 
-function renderInsurancesDropdown(result) {
+function generateInsuranceOptionElement(result) {
     return `
     <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
     `;
+}
+
+function cleanApiResults(data) {
+    const clean_data = [];
+    for (i = 0; i < data.length; i++) {
+        if (data[i] != null) {
+            clean_data.push(data[i]);
+        }
+    }
+    displayResponseData(clean_data);
 }
 
 // parses doctors endpoint response data
@@ -227,16 +269,16 @@ function displayResponseData(response) {
 }
 
 function displaySpecialtyResponse(response) {
-    const results = response.data.map((item, index) => renderSpecialtyDropdown(item));
+    console.log(response);
+    const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
     $('.js-specialty').html(results.sort());
-    renderSpecialtyDropdown(results);
+    generateSpecialtyOptionElement(results);
     console.log('displaySpecialtyResponse ran');
 }
 
 function displayInsurancesResponse(response) {
-    const results = response.data.map((item, index) => renderInsurancesDropdown(item));
+    const results = response.data.map((item, index) => generateInsuranceOptionElement(item));
     $('.js-insurance').html(results.sort());
-    renderInsurancesDropdown(results);
     console.log('displayInsurancesResponse ran');
 }
 
@@ -245,7 +287,7 @@ function generateDoctorProfile() {
     console.log("generateDoctorProfile ran");
     $('.js-search-results').on('click', '.js-more', function (event) {
         event.preventDefault();
-        $('.js-search-results').hide();
+        // $('.js-search-results').hide();
         $('.js-profile').show();
         $('navbar-header').show();
         const firstname = $(this).attr("firstname");
@@ -259,14 +301,16 @@ function generateDoctorProfile() {
         const state = $(this).attr("state");
         const zip = $(this).attr("zip");
         const contact = $(this).attr("contact");
+        const profile_bio = $(this).attr("profile_bio");
+        const profile_insurance = $(this).attr("profile_insurance")
         // const data = [firstname,lastname,image];
         // getDoctor(uid, displayDoctorProfile);
-        displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip);
+        displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip, profile_bio, profile_insurance);
         // console.log(data);
     });
 }
 
-function displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip) {
+function displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip, profile_bio, profile_insurance) {
     $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
     $('.js-profile-name').html(`${firstname} ${lastname}`);
     $('.js-profile-title').html(`${title}`);
@@ -277,6 +321,8 @@ function displayDoctorProfile(image, firstname, lastname, title, practice, addre
     $('.js-practice-state').html(`${state} `);
     $('.js-practice-zip').html(`${zip}`);
     $('.js-profile-contact').html(`${contact}`);
+    $('.js-profile-bio').html(`${profile_bio}`);
+    $('.js-profile-insurance').html(`${profile_insurance}`)
 
 
     // $('.js-name').html(response);
@@ -288,9 +334,16 @@ function renderDoctorProfile(result) {
 
     return `
 
-
-
 `;
+}
+
+function openTab(tabName) {
+    var i;
+    var x = document.getElementsByClassName("profile-tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
 }
 
 
@@ -311,7 +364,7 @@ function watchSubmit() {
         };
         const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
         // target.val("");
-        getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
+        getDataFromApi(specialty, insurance, user_location, range_clean, cleanApiResults);
         console.log("watchSubmit ran", range_clean);
     });
 }
