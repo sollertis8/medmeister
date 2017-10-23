@@ -1,78 +1,103 @@
-//const BETTER_DOCTOR_API = 'https://api.betterdoctor.com/2016-03-01/doctors';
-// var map;
+
 $(document).ready(function () {
-    // new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
-    console.log("ready!");
-    // $('navbar-header').hide();
-    // initMap(47.6145, -122.3418);
-    // getUserLocation();
-    getSpecialties(cleanSpecialtiesData);
-    // setTimeout(getInsurances(displayInsurancesResponse), 5000);
-    // getInsurances(displayInsurancesResponse);
+    getSpecialties(displaySpecialtyResponse);
     $(watchSubmit);
-    // setTimeout(getInsurances(callback), 600)
+    $(mapResize);
     $(generateDoctorProfile);
 });
 
-
-
-// const crypto = require('crypto');
-
-// const generate_key = function() {
-//     const sha = crypto.createHash('sha256');
-//     sha.update(Math.random().toString());
-//     return sha.digest('hex');
-// };
-// initialize google maps
-
-var map;
-// var pos;
-
-function initMap() {
-    var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
-    map = new google.maps.Map($("#map")[0], {
-        center: mapCenter,
-        zoom: 8
-    });
-}
-
-
-
-if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        // infoWindow = new google.maps.InfoWindow({map: map});
-        pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+$(this).delay(1000).queue(function () {
+    function getInsurances(callback) {
+        const settings = {
+            data: {
+                skip: '0',
+                limit: '',
+                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+            },
+            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
+            dataType: 'json',
+            type: 'GET',
+            success: callback
         };
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
-        // map.panTo(pos);
-        console.log(pos);
+        $.ajax(settings)
+    }
+    $(this).dequeue();
+    getInsurances(displayInsurancesResponse);
+});
+
+var pos;
+
+function initMap(practice_location, practice_name) {
+    var mapCenter = new google.maps.LatLng(33.7490, -84.3880); //Google map Coordinates
+    var map = new google.maps.Map($("#map")[0], {
+        center: mapCenter,
+        zoom: 9
     });
-} else {
-    console.log("Browser doesn't support geolocation!");
+
+    if (practice_location && practice_name != null) {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                infoWindow = new google.maps.InfoWindow({
+                    map: map
+                });
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(`Found your location`);
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: "Your location"
+                });
+                infoWindow2 = new google.maps.InfoWindow({
+                    map: map
+                });
+                infoWindow2.setPosition(practice_location);
+                infoWindow2.setContent(practice_name);
+                var marker2 = new google.maps.Marker({
+                    position: practice_location,
+                    map: map,
+                    title: name
+                });
+
+                map.panTo(pos);
+                console.log(pos);
+
+                // marker.setMap(map);
+            });
+        } else {
+            console.log("Browser doesn't support geolocation!");
+        }
+
+    } else {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: "Your location"
+                });
+                map.panTo(pos);
+                console.log(pos);
+                // marker.setMap(map);
+            });
+        } else {
+            console.log("Browser doesn't support geolocation!");
+        }
+    }
 }
 
-
-// function initMap(latitude, longitude) {
-//     var uluru = {
-//         lat: parseInt(latitude),
-//         lng: parseInt(longitude)
-//     };
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 8,
-//         center: uluru
-//     });
-//     var marker = new google.maps.Marker({
-//         position: uluru,
-//         map: map
-//     });
-
-//     // ${initMap(result.practices[0].lat, result.practices[0].lon)}
-
-// }
-
+function mapResize() {
+    $("#map-button").on('click', function (event) {
+        initMap(practice_location, practice_name);
+    });
+}
 
 // get data from API and limit results
 function getDataFromApi(specialty, insurance, user_location, location, callback) {
@@ -94,38 +119,6 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
     $.ajax(settings)
 }
 
-
-$(this).delay(1000).queue(function () {
-    function getInsurances(callback) {
-        const settings = {
-            data: {
-                skip: '0',
-                limit: '',
-                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-            },
-            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
-            dataType: 'json',
-            type: 'GET',
-            success: callback
-        };
-        $.ajax(settings)
-    }
-    $(this).dequeue();
-    getInsurances(cleanInsurancesData);
-});
-
-function cleanInsurancesData(data) {
-    const clean_data = [];
-    for (i = 0; i < data.length; i++) {
-        if (data[i] != null) {
-            clean_data.push(data[i]);
-        }
-    }
-    console.log(data);
-    console.log(clean_data);
-    displayInsurancesResponse(clean_data);
-}
-
 function getSpecialties(callback) {
     const settings = {
         data: {
@@ -142,46 +135,24 @@ function getSpecialties(callback) {
     $.ajax(settings)
 }
 
-function cleanSpecialtiesData(response) {
-    const clean_data = {};
-    // json_data = JSON.stringify(data);
-    for (i = 0; i < response.length; i++) {
-        if (response[i] != null) {
-            clean_data.push(json_data);
-        }
-    }
-    // console.log(data);
-    // console.log(clean_data);
-    console.log(json_data);
-    displaySpecialtyResponse(clean_data);
+function getDoctor(uid, callback) {
+    const settings = {
+        data: {
+            user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+        },
+        url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+    };
+    $.ajax(settings)
 }
 
-// function getDoctor(uid, callback) {
-//     const settings = {
-//         data: {
-//             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-//         },
-//         url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
-//         dataType: 'json',
-//         type: 'GET',
-//         success: callback
-//     };
-//     $.ajax(settings)
-// }
-
 // renders results to user
-function renderResult(result) {
-    $('.js-search-results').show();
-    $('.bio').shorten();
-    // data = [];
-    // first_name = result.profile.first_name;
-    // last_name = result.profile.last_name;
-    // title = result.profile.title;
-    // bio =  result.profile.bio;
-    // data = [first_name,last_name,title,bio];
-
+function getDoctorHtmlString(result) {
+    $('.js-map').show();
     return `
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-md-6">
     <div class="card-container">
     <div class="card">
         <div class="front">
@@ -216,8 +187,8 @@ function renderResult(result) {
                     <p class="text-center"><div class="bio">${result.profile.bio}</div></p> 
             <div class="footer">
                 <div class="social-links text-center">
-                    <a href="javascript:void(0)" class="more js-more" data-toggle="modal" data-target=".bd-example-modal-lg"
-                    profile_image="${result.profile.image_url} "firstname="${result.profile.first_name}" 
+                    <a href="#" class="more js-more" data-toggle="modal" data-target=".bd-example-modal-lg"
+                    profile_image="${result.profile.image_url}" firstname="${result.profile.first_name}" 
                     lastname="${result.profile.last_name}" profile_title="${result.profile.title}" 
                     bio="${result.profile.bio}" license_state="${result.licenses[0].state}" 
                     specialties_description="${result.specialties[0].description}" practice="${result.practices[0].name}"
@@ -228,8 +199,10 @@ function renderResult(result) {
                     zip="${result.practices[0].visit_address.zip}"
                     contact="${result.practices[0].phones[0].number}" 
                     profile_bio="${result.profile.bio}"
-                    profile_insurance="${result.insurances[0].insurance_provider.name}
-                    ">View More</a>
+                    profile_insurance="${result.insurance_accepted}"
+                    practice_lat="${result.practices[0].lat}"
+                    practice_long="${result.practices[0].lon}"
+                    >View More</a>
                 </div>
             </div>
         </div> <!-- end back panel -->
@@ -250,29 +223,196 @@ function generateInsuranceOptionElement(result) {
     `;
 }
 
-function cleanApiResults(data) {
-    const clean_data = [];
-    for (i = 0; i < data.length; i++) {
-        if (data[i] != null) {
-            clean_data.push(data[i]);
-        }
-    }
-    displayResponseData(clean_data);
-}
-
 // parses doctors endpoint response data
 function displayResponseData(response) {
-    const results = response.data.map((item, index) => renderSpecialtyDropdown(item));
-    $('.js-specialty').html(results.sort());
-    renderSpecialtyDropdown(results);
-    console.log('displaySpecialtyResponse ran');
+    if (response.data.length == 0) {
+        $('.js-search-results').html("No results, search again...");
+        return
     }
 
+    const results = response.data.map((item, index) => {
+        return getDoctorHtmlString(normalizeResultData(item))
+    })
 
+    $('.js-search-results').html(results);
 
+    $('.js-search-results').show();
+    $('.bio').shorten();
+}
+
+/**
+ * Populates each from API response for doctor data:
+ * profile
+ * practices
+ * insurances
+ * specialties
+ * licenses
+ * 
+ * @param {object} data 
+ */
+function normalizeResultData(data) {
+    let obj = {
+        profile: getProfileFromDoctorData(data),
+        practices: getPracticesFromDoctorData(data),
+        insurances: getInsurancesFromDoctorData(data),
+        specialties: getSpecialtiesFromDoctorData(data),
+        licenses: getLicensesFromDoctorData(data),
+        insurance_accepted: getInsuranceAccepted(data)
+    }
+    console.log(obj)
+    return obj
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ */
+function getProfileFromDoctorData(data) {
+    // assume each object has a .profile element
+    let profileKeys = Object.keys(data.profile)
+    let profile = {
+        image_url: (profileKeys.includes('image_url') ? data.profile.image_url : ""),
+        first_name: (profileKeys.includes('first_name') ? data.profile.first_name : ""),
+        last_name: (profileKeys.includes('last_name') ? data.profile.last_name : ""),
+        title: (profileKeys.includes('title') ? data.profile.title : ""),
+        bio: (profileKeys.includes('bio') ? data.profile.bio : "No Bio Available")
+    }
+
+    return profile
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ * @returns {array} Array of practices objects
+ */
+function getPracticesFromDoctorData(data) {
+    // assume the response has a practices element and that it is an array
+    practices = []
+    data.practices.map(item => {
+        let practiceKeys = Object.keys(item)
+        let practice = {
+            name: (practiceKeys.includes('name') ? item.name : ""),
+            visit_address: getPracticeVisitAddress(item),
+            phones: item.phones,
+            distance: (practiceKeys.includes('distance') ? item.distance : 0),
+            lat: (practiceKeys.includes('lat') ? item.lat : ""),
+            lon: (practiceKeys.includes('lon') ? item.lon : "")
+        }
+        practices.push(practice)
+    })
+
+    function getPracticeVisitAddress(practice) {
+        // Again, assume, each practice has a 'visit_address' property
+        let visitAddressKeys = Object.keys(practice.visit_address)
+        return {
+            street: (visitAddressKeys.includes('street') ? practice.visit_address.street : ""),
+            street2: (visitAddressKeys.includes('street2') ? practice.visit_address.street2 : ""),
+            city: (visitAddressKeys.includes('city') ? practice.visit_address.city : ""),
+            state: (visitAddressKeys.includes('state') ? practice.visit_address.state : ""),
+            zip: (visitAddressKeys.includes('zip') ? practice.visit_address.zip : "")
+        }
+    }
+
+    return practices
+}
+
+/**
+ * 
+ * @param {object} data The data in the response from the api's /doctors endpoint.
+ */
+function getInsurancesFromDoctorData(data) {
+    insurances = []
+    data.insurances.map(item => {
+        insuranceKeys = Object.keys(item)
+        insurances.push({
+            insurance_provider: (insuranceKeys.includes('insurance_provider') ? item.insurance_provider : {
+                name: "Unknown"
+            })
+        })
+    })
+    return insurances
+}
+
+function getInsuranceAccepted(data) {
+insurance_accepted=[];
+    for (var i = 0; i < data.insurances.length; i++) {
+        insurance_accepted.push(data.insurances[i].insurance_provider.name);
+        var unique_insurance_accepted=[];
+        $.each(insurance_accepted, function(i, el){
+           if($.inArray(el, unique_insurance_accepted) === -1) unique_insurance_accepted.push(el);
+        })
+        insurance_logos = [];
+        logo="";
+        
+        // console.log(insurance_accepted);
+    }
+    for (var i = 0; i < unique_insurance_accepted.length; i++) {
+        switch(unique_insurance_accepted[i])
+        {
+           case 'Aetna': logo = "<img src='logos/aetna.jpg' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Amerihealth': logo = "<img src='logos/amerihealth.jpg' style='width: 25%; height: 25%;' />";
+           break;
+           case 'BCBS': logo = "<img src='logos/bcbs.png' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Cigna': logo= "<img src='logos/cigna.png' style='width: 25%; height: 25%;' />";
+           break;
+           case 'EmblemHealth': logo = "<img src='logos/emblemhealth.png' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Humana': logo = "<img src='logos/humana.png' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Medicaid': logo = "<img src='logos/medicaid.jpg' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Medicare': logo = "<img src='logos/medicare.jpg' style='width: 25%; height: 25%;' />";
+           break;
+           case 'Multiplan': logo = "<img src='logos/multiplan.gif' style='width: 25%; height: 25%;' />";
+           break;
+           case 'QualCare': logo = "<img src='logos/qualcare.jpg' style='width: 25%; height: 25%;' />";
+           break;
+           case 'United Healthcare': logo = "<img src='logos/united_healthcare.png' style='width: 25%; height: 25%;' />";
+           break;
+           default: image=i;
+        }
+        insurance_logos.push(logo);
+        // console.log(logo);
+        console.log(insurance_logos);
+        
+        }
+    return insurance_logos;
+}
+/**
+ * 
+ * @param {object} data 
+ */
+function getSpecialtiesFromDoctorData(data) {
+    specialties = []
+    data.specialties.map(item => {
+        speacialtyKeys = Object.keys(item)
+        specialties.push({
+            name: (speacialtyKeys.includes('name') ? item.description : ""),
+            description: (speacialtyKeys.includes('description') ? item.description : "")
+        })
+    })
+    return specialties
+}
+
+/**
+ *
+ * @param {object} data
+ */
+function getLicensesFromDoctorData(data) {
+    licenses = []
+    data.licenses.map(item => {
+        licenseKeys = Object.keys(item)
+        licenses.push({
+            state: (licenseKeys.includes('state') ? item.state : "Unknown")
+        })
+    })
+    return licenses
+}
 
 function displaySpecialtyResponse(response) {
-    console.log(response);
     const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
     $('.js-specialty').html(results.sort());
     generateSpecialtyOptionElement(results);
@@ -287,10 +427,12 @@ function displayInsurancesResponse(response) {
 
 
 function generateDoctorProfile() {
+    practice_location = {};
+    practice_name = "";
     console.log("generateDoctorProfile ran");
     $('.js-search-results').on('click', '.js-more', function (event) {
+        document.getElementById('Bio').focus();
         event.preventDefault();
-        // $('.js-search-results').hide();
         $('.js-profile').show();
         $('navbar-header').show();
         const firstname = $(this).attr("firstname");
@@ -305,15 +447,23 @@ function generateDoctorProfile() {
         const zip = $(this).attr("zip");
         const contact = $(this).attr("contact");
         const profile_bio = $(this).attr("profile_bio");
-        const profile_insurance = $(this).attr("profile_insurance")
-        // const data = [firstname,lastname,image];
-        // getDoctor(uid, displayDoctorProfile);
-        displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip, profile_bio, profile_insurance);
-        // console.log(data);
+        const profile_insurance = $(this).attr("profile_insurance");
+        practice_lat = $(this).attr("practice_lat");
+        practice_long = $(this).attr("practice_long");
+        practice_location = {
+            lat: parseFloat(practice_lat),
+            lng: parseFloat(practice_long)
+        }
+        practice_name = $(this).attr("practice");
+        displayDoctorProfile(image, firstname, lastname, title, practice, 
+            address, address2, contact, city, state, zip, profile_bio, 
+            profile_insurance);
     });
 }
 
-function displayDoctorProfile(image, firstname, lastname, title, practice, address, address2, contact, city, state, zip, profile_bio, profile_insurance) {
+function displayDoctorProfile(image, firstname, lastname, title, 
+    practice, address, address2, contact, city, state, zip, profile_bio, 
+    profile_insurance) {
     $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
     $('.js-profile-name').html(`${firstname} ${lastname}`);
     $('.js-profile-title').html(`${title}`);
@@ -325,19 +475,7 @@ function displayDoctorProfile(image, firstname, lastname, title, practice, addre
     $('.js-practice-zip').html(`${zip}`);
     $('.js-profile-contact').html(`${contact}`);
     $('.js-profile-bio').html(`${profile_bio}`);
-    $('.js-profile-insurance').html(`${profile_insurance}`)
-
-
-    // $('.js-name').html(response);
-    //renderDoctorProfile(response);
-}
-
-function renderDoctorProfile(result) {
-    // console.log(result);
-
-    return `
-
-`;
+    $('.js-profile-insurance').html(`${profile_insurance}`);
 }
 
 function openTab(tabName) {
@@ -349,8 +487,7 @@ function openTab(tabName) {
     document.getElementById(tabName).style.display = "block";
 }
 
-
-// listen's for form submission
+// listens for form submission
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
@@ -366,8 +503,7 @@ function watchSubmit() {
             range_target_value
         };
         const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
-        // target.val("");
-        getDataFromApi(specialty, insurance, user_location, range_clean, cleanApiResults);
+        getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
         console.log("watchSubmit ran", range_clean);
     });
 }

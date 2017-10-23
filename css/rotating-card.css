@@ -2,7 +2,8 @@ body {
 	margin-top: 60px;
 	font-size: 14px;
 	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
-	background-color: #E5E9ED;
+    background-color: #E5E9ED;
+    
 }
 .btn:hover,
 .btn:focus,
@@ -18,6 +19,7 @@ body {
         margin-bottom: 30px;
         /* max-width: 400px; */
         width: 100%;
+        
 }
 /* flip the pane when hovered */
 .card-container:not(.manual-flip):hover .card,
@@ -46,7 +48,7 @@ body {
    -moz-transform-style: preserve-3d;
      -o-transform-style: preserve-3d;
         transform-style: preserve-3d;
-	position: relative;
+    position: relative;
 }
 
 /* hide back of pane during swap */
@@ -88,9 +90,11 @@ body {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px;
     color: #444444;
+    
 }
 .card-container, .front, .back {
-	width: 100%;
+    width: 100%;
+    min-width: 300px;
 	height: 420px;
 	border-radius: 4px;
 }
@@ -120,6 +124,7 @@ body {
     background-color: rgba(0, 0, 0, 0);
     box-shadow: none;
     padding: 10px 20px 20px;
+    
 }
 .card .content .main {
     min-height: 160px;
@@ -319,3 +324,8 @@ body {
         visibility: visible;
     }
 }
+
+/* @media screen and (min-width: 1074px){ 
+
+    
+} */

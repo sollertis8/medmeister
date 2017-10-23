@@ -1,18 +1,26 @@
-/* .search-results {
-    display: inline;
-} */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
 
 .logo-container {
-    width: 200px;
-    height: 100px;
-    background-color: #3a3f51;
-    position: fixed;
+    width: 250px;
+    height: 150px;
+    position: absolute;
+    padding: 10px;
 }
 
 .container-fluid {
     height: 100%;
-    padding-left: 200px;
     color: #2e3344;
+    padding-top: 80px;
 }
 
 .card a {
@@ -32,11 +40,15 @@
 }
 
 .top-nav {
-    background-color: #3a3f51;
+    background-color: #ffffff;
     width: 100%;
-    height: 60px;
-    position: relative;
+    height: 80px;
+    position: fixed;
+    display: block;
     z-index: 1000;
+    border-top-style: solid !important;
+    border-color: rgb(170, 132, 214) !important;
+    
 }
 
 .top-nav ul {
@@ -109,10 +121,10 @@ button {
     color: #000000 !important;
 }
 
-.map {
-    height: 100px;
-    width: auto;
-}
+/* .map {
+    height: 300px;
+    width: 500px;
+} */
 
 
 /* .social-links a {
@@ -131,7 +143,12 @@ button {
     /* margin: 50px; */
     /* text-align: center; */
     margin: 0 auto;
-    padding: 20px;
+    padding: 80px;
+    font-size: 1.5em;
+}
+
+input {
+    line-height: 1.5em;
 }
 
 .distance {
@@ -146,6 +163,10 @@ a {
     text-decoration: none;
 }
 
+a :visited {
+    color: #3a3f51 !important;
+}
+
 li {
     list-style: none;
 }
@@ -155,9 +176,14 @@ li {
 }
 
 body {
-    font-family: 'Montserrat', Arial, serif;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    /* font-family: 'Montserrat', Arial, serif; */
+    color: #fff;
+    font-weight: 300;
     background-color: #f6f6f6 !important;
     margin: 0 !important;
+    background-image: url("../images/background-2.jpg") !important; 
+    background-size: 100% 100%;
 }
 
 ::selection {
@@ -169,6 +195,11 @@ body {
     height: 400px;
     width: 100%;
     color: #000000;
+}
+
+#profile-map {
+    height: 420px;
+    width: 650px;
 }
 
 .specialty {
@@ -241,7 +272,7 @@ span {
 }
 
 label {
-    color: #83828D;
+    color: rgb(52, 50, 75);
 }
 
 .icons {
@@ -261,7 +292,7 @@ label {
     display: inline-block;
     height: 500px;
     color: #3a3f51;
-    padding: 20px 20px 20px 220px;
+    padding: 0px 20px 20px 220px;
 }
 
 .nav-modal{
@@ -275,8 +306,13 @@ label {
     box-shadow: 0 8px 6px -6px #999;
 }
 
- .profile-bio {
+.modal label {
+    color: rgb(195, 192, 224);
+}
+
+.profile-bio {
     text-align: center;
+    font-size: 1.5em;
  }
 
  .w3-bar .w3-button {
@@ -302,3 +338,13 @@ label {
     outline: none;
     display: block;
 }
+
+#Insurance_Accepted {
+    text-align: center;
+    overflow: scroll;
+}
+
+/* @media (max-width: @screen-xs-max){
+
+    
+} */

@@ -26,8 +26,9 @@
     <!-- Optional theme -->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
     <link href="css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -42,99 +43,99 @@
 
     <div class="top-nav">
 
-        <ul>
-            <li>
-                <a href="#">Med Meister</a>
-            </li>
-            
-        </ul>
+        <div class= "logo-container">
+                <a href="#"><img src="images/Medmeister-Logo.png" width="50%" height="50%"/></a>
+                <!-- <a href="#">Med Meister</a> -->
+          </div>
+
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-    <navbar-header>
+    <div class="modal fade bd-example-modal-lg" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <navbar-header>
 
-        <ul>
-            <!-- <div class= logo><a href="#">Med Meister</a></div> -->
-            <section>
-                <div class="profile-image js-profile-image"></div>
-                <div class="profile-name js-profile-name"></div>
-                <div class="profile-title js-profile-title"></div>
-            </section>
-            <div class="line"></div>
+                    <ul>
+                        <!-- <div class= logo><a href="#">Med Meister</a></div> -->
+                        <section>
+                            <div class="profile-image js-profile-image"></div>
+                            <div class="profile-name js-profile-name"></div>
+                            <div class="profile-title js-profile-title"></div>
+                        </section>
+                        <div class="line"></div>
 
-            <!-- <address class="vcard">  -->
-            <div class="practice">
-                <div class="icons">
-                    <i class="glyphicon glyphicon-th" style="color: #885EAD">
-                    </i>
-                </div>
-                <p>
-                    <label for="profile-practice">Practice</label>
-                    <div class="profile-practice js-profile-practice"></div>
-                </p>
-            </div>
-            <div class="line"></div>
-            <section class="address js-address">
+                        <!-- <address class="vcard">  -->
+                        <div class="practice">
+                            <div class="icons">
+                                <i class="glyphicon glyphicon-th" style="color: #885EAD">
+                                </i>
+                            </div>
+                            <p>
+                                <label for="profile-practice">Practice</label>
+                                <div class="profile-practice js-profile-practice"></div>
+                            </p>
+                        </div>
+                        <div class="line"></div>
+                        <section class="address js-address">
 
-                <p>
-                    <div class="icons">
-                        <i class="glyphicon glyphicon-home" style="color: #885EAD">
-                        </i>
-                    </div>
-                    <label for="address">Address</label>
-                </p>
-                <span class="practice-address js-practice-address"></span>
-                <div class="practice-address2 js-practice-address2"></div>
-                <span class="practice-city js-practice-city"></span>
-                <span class="practice-state js-practice-state"></span>
-                <span class="practice-zip js-practice-zip"></span>
-                <div class="line"></div>
-                <div class="icons">
-                    <i class="glyphicon glyphicon-phone" style="color: #885EAD">
-                    </i>
-                </div>
-                <p>
-                    <label for="profile-contact">Phone</label>
-                </p>
-                <span class="profile-contact js-profile-contact"></span>
-            </section>
-            <div class="line"></div>
-            
-            <!-- <li><a href="#">Home</a></li>
+                            <p>
+                                <div class="icons">
+                                    <i class="glyphicon glyphicon-home" style="color: #885EAD">
+                                    </i>
+                                </div>
+                                <label for="address">Address</label>
+                            </p>
+                            <span class="practice-address js-practice-address"></span>
+                            <div class="practice-address2 js-practice-address2"></div>
+                            <span class="practice-city js-practice-city"></span>
+                            <span class="practice-state js-practice-state"></span>
+                            <span class="practice-zip js-practice-zip"></span>
+                            <div class="line"></div>
+                            <div class="icons">
+                                <i class="glyphicon glyphicon-phone" style="color: #885EAD">
+                                </i>
+                            </div>
+                            <p>
+                                <label for="profile-contact">Phone</label>
+                            </p>
+                            <span class="profile-contact js-profile-contact"></span>
+                        </section>
+                        <div class="line"></div>
+
+                        <!-- <li><a href="#">Home</a></li>
                         <li><a href="#">News</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">About</a></li>
                         <div class="line"></div> -->
-        </ul>
-    </navbar-header>
-    <div class="nav-modal">
-         <div class="w3-bar w3-black">
-                    <button class="w3-bar-item w3-button" onclick="openTab('Bio')" autofocus="true">Bio</button>
-                    <button class="w3-bar-item w3-button" onclick="openTab('Insurance_Accepted')">Insurance Accepted</button>
-                    <button class="w3-bar-item w3-button" onclick="openTab('Map')">Map</button>
-                  </div>
-    </div>
-    <div class="main-profile-content">
-           
-            <div id="Bio" class="profile-tab">
-                <h2>Bio</h2>
-                <div class="profile-bio js-profile-bio"></div>
-                  </div>
-                  
-                  <div id="Insurance_Accepted" class="profile-tab" style="display:none">
+                    </ul>
+                </navbar-header>
+                <div class="nav-modal">
+                    <div class="w3-bar w3-black">
+                        <button class="w3-bar-item w3-button" onclick="openTab('Bio')" autofocus="true">Bio</button>
+                        <button class="w3-bar-item w3-button" onclick="openTab('Insurance_Accepted')">Insurance Accepted</button>
+                        <button class="w3-bar-item w3-button" id="map-button" onclick="openTab('profile-map')">Map</button>
+                    </div>
+                </div>
+                <div class="main-profile-content">
+
+                    <div id="Bio" class="profile-tab">
+                        <h2>Bio</h2>
+                        <div class="profile-bio js-profile-bio"></div>
+                    </div>
+
+                    <div id="Insurance_Accepted" class="profile-tab" style="display:none">
                         <div class="profile-insurance js-profile-insurance"></div>
-                  </div>
-                  
-                  <div id="Map" class="profile-tab" style="display:none">
-                    <h2>Map</h2>
-                    <p>Tokyo is the capital of Japan.</p>
-                  </div>
-            
+                    </div>
+
+                    <div id="profile-map" class="profile-tab" style="display:none">
+                        <h2>Map</h2>
+                        <div id="map" class="profile-map js-profile-map"></div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
     </div>
     <div class="container-fluid">
 
@@ -173,8 +174,8 @@
 
                 <button type="submit">Search</button>
             </form>
-            <div id="map" hidden></div>
-            <div class="col-sm-12 col-sm-offest-1">
+
+            <div class="col-lg-12">
                 <section>
                     <div class="search-resuts js-search-results">
                     </div>
