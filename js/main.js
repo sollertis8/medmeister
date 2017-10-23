@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     getSpecialties(displaySpecialtyResponse);
     $(watchSubmit);
@@ -6,6 +5,7 @@ $(document).ready(function () {
     $(generateDoctorProfile);
 });
 
+// delay second call to api to circumvent access time limit
 $(this).delay(1000).queue(function () {
     function getInsurances(callback) {
         const settings = {
@@ -27,6 +27,7 @@ $(this).delay(1000).queue(function () {
 
 var pos;
 
+// initialize google maps
 function initMap(practice_location, practice_name) {
     var mapCenter = new google.maps.LatLng(33.7490, -84.3880); //Google map Coordinates
     var map = new google.maps.Map($("#map")[0], {
@@ -39,7 +40,7 @@ function initMap(practice_location, practice_name) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 infoWindow = new google.maps.InfoWindow({
                     map: map,
-                    pixelOffset: new google.maps.Size(0,-35)
+                    pixelOffset: new google.maps.Size(0, -35)
                 });
                 pos = {
                     lat: position.coords.latitude,
@@ -47,7 +48,7 @@ function initMap(practice_location, practice_name) {
                 };
                 infoWindow.setPosition(pos);
                 infoWindow.setContent(`Found your location`);
-                
+
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
@@ -55,7 +56,7 @@ function initMap(practice_location, practice_name) {
                 });
                 infoWindow2 = new google.maps.InfoWindow({
                     map: map,
-                    pixelOffset: new google.maps.Size(0,-35)
+                    pixelOffset: new google.maps.Size(0, -35)
                 });
                 infoWindow2.setPosition(practice_location);
                 infoWindow2.setContent(practice_name);
@@ -64,14 +65,10 @@ function initMap(practice_location, practice_name) {
                     map: map,
                     title: name
                 });
-
                 map.panTo(pos);
-                console.log(pos);
-
-                // marker.setMap(map);
             });
         } else {
-            console.log("Browser doesn't support geolocation!");
+            // console.log("Browser doesn't support geolocation!");
         }
 
     } else {
@@ -87,22 +84,21 @@ function initMap(practice_location, practice_name) {
                     title: "Your location"
                 });
                 map.panTo(pos);
-                console.log(pos);
-                // marker.setMap(map);
             });
         } else {
-            console.log("Browser doesn't support geolocation!");
+            // console.log("Browser doesn't support geolocation!");
         }
     }
 }
 
+// resize map so its visible in the modal
 function mapResize() {
     $("#map-button").on('click', function (event) {
         initMap(practice_location, practice_name);
     });
 }
 
-// get data from API and limit results
+// get doctor data from API and limit results
 function getDataFromApi(specialty, insurance, user_location, location, callback) {
     const settings = {
         data: {
@@ -122,6 +118,7 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
     $.ajax(settings)
 }
 
+// get specialty data from api
 function getSpecialties(callback) {
     const settings = {
         data: {
@@ -138,6 +135,7 @@ function getSpecialties(callback) {
     $.ajax(settings)
 }
 
+// get individual doctor data from api for profile
 function getDoctor(uid, callback) {
     const settings = {
         data: {
@@ -151,7 +149,7 @@ function getDoctor(uid, callback) {
     $.ajax(settings)
 }
 
-// renders results to user
+// render results to user
 function getDoctorHtmlString(result) {
     $('.js-map').show();
     return `
@@ -213,34 +211,37 @@ function getDoctorHtmlString(result) {
 </div> <!-- end card-container -->
     `;
 }
-
+// generate specialty option element
 function generateSpecialtyOptionElement(result) {
     return `
     <option value="${result.uid}">${result.name}</option>
     `;
 }
 
+// generate insurance option element
 function generateInsuranceOptionElement(result) {
     return `
     <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
     `;
 }
 
+// shorten bio info on cards
 shorten_options = {
     namespace: 'shorten',
     chars: 200,
     ellipses: '...',
     more: '',
     less: 'less'
-  };
+};
 
-  specialty_options = {
+//shorten specialty info on cards
+specialty_options = {
     namespace: 'shorten',
     chars: 50,
     ellipses: '...',
     more: '',
     less: 'less'
-  };
+};
 
 // parses doctors endpoint response data
 function displayResponseData(response) {
@@ -248,13 +249,10 @@ function displayResponseData(response) {
         $('.js-search-results').html("No results, search again...");
         return
     }
-
     const results = response.data.map((item, index) => {
         return getDoctorHtmlString(normalizeResultData(item))
     })
-
     $('.js-search-results').html(results);
-
     $('.js-search-results').show();
     $.shorten.setDefaults()
     $('.bio').shorten(shorten_options);
@@ -280,7 +278,6 @@ function normalizeResultData(data) {
         licenses: getLicensesFromDoctorData(data),
         insurance_accepted: getInsuranceAccepted(data)
     }
-    console.log(obj)
     return obj
 }
 
@@ -334,7 +331,6 @@ function getPracticesFromDoctorData(data) {
             zip: (visitAddressKeys.includes('zip') ? practice.visit_address.zip : "")
         }
     }
-
     return practices
 }
 
@@ -354,52 +350,61 @@ function getInsurancesFromDoctorData(data) {
     })
     return insurances
 }
-
+/** @param {object} data The data in the response from the api's /doctors endpoint.
+ * clean accepted insurance data response
+ */
 function getInsuranceAccepted(data) {
-insurance_accepted=[];
+    insurance_accepted = [];
     for (var i = 0; i < data.insurances.length; i++) {
         insurance_accepted.push(data.insurances[i].insurance_provider.name);
-        var unique_insurance_accepted=[];
-        $.each(insurance_accepted, function(i, el){
-           if($.inArray(el, unique_insurance_accepted) === -1) unique_insurance_accepted.push(el);
+        var unique_insurance_accepted = [];
+        $.each(insurance_accepted, function (i, el) {
+            if ($.inArray(el, unique_insurance_accepted) === -1) unique_insurance_accepted.push(el);
         })
         insurance_logos = [];
-        logo="";
-        
-        // console.log(insurance_accepted);
+        logo = "";
     }
+    // assign logos for elements in insurance reponse data array
     for (var i = 0; i < unique_insurance_accepted.length; i++) {
-        switch(unique_insurance_accepted[i])
-        {
-           case 'Aetna': logo = "<img src='logos/aetna.jpg' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Amerihealth': logo = "<img src='logos/amerihealth.jpg' style='width: 25%; height: 25%;' />";
-           break;
-           case 'BCBS': logo = "<img src='logos/bcbs.png' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Cigna': logo= "<img src='logos/cigna.png' style='width: 25%; height: 25%;' />";
-           break;
-           case 'EmblemHealth': logo = "<img src='logos/emblemhealth.png' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Humana': logo = "<img src='logos/humana.png' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Medicaid': logo = "<img src='logos/medicaid.jpg' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Medicare': logo = "<img src='logos/medicare.jpg' style='width: 25%; height: 25%;' />";
-           break;
-           case 'Multiplan': logo = "<img src='logos/multiplan.gif' style='width: 25%; height: 25%;' />";
-           break;
-           case 'QualCare': logo = "<img src='logos/qualcare.jpg' style='width: 25%; height: 25%;' />";
-           break;
-           case 'United Healthcare': logo = "<img src='logos/united_healthcare.png' style='width: 25%; height: 25%;' />";
-           break;
-           default: image=i;
+        switch (unique_insurance_accepted[i]) {
+            case 'Aetna':
+                logo = "<img src='logos/aetna.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Amerihealth':
+                logo = "<img src='logos/amerihealth.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'BCBS':
+                logo = "<img src='logos/bcbs.png' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Cigna':
+                logo = "<img src='logos/cigna.png' style='width: 25%; height: 25%;' />";
+                break;
+            case 'EmblemHealth':
+                logo = "<img src='logos/emblemhealth.png' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Humana':
+                logo = "<img src='logos/humana.png' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Medicaid':
+                logo = "<img src='logos/medicaid.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Medicare':
+                logo = "<img src='logos/medicare.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Multiplan':
+                logo = "<img src='logos/multiplan.gif' style='width: 25%; height: 25%;' />";
+                break;
+            case 'QualCare':
+                logo = "<img src='logos/qualcare.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'United Healthcare':
+                logo = "<img src='logos/united_healthcare.png' style='width: 25%; height: 25%;' />";
+                break;
+            default:
+                image = i;
         }
         insurance_logos.push(logo);
-        // console.log(logo);
-        console.log(insurance_logos);
-        
-        }
+    }
     return insurance_logos;
 }
 /**
@@ -433,29 +438,28 @@ function getLicensesFromDoctorData(data) {
     return licenses
 }
 
+// display specialty response
 function displaySpecialtyResponse(response) {
     const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
     $('.js-specialty').html(results.sort());
     generateSpecialtyOptionElement(results);
-    console.log('displaySpecialtyResponse ran');
 }
 
+// display insurance response
 function displayInsurancesResponse(response) {
     const results = response.data.map((item, index) => generateInsuranceOptionElement(item));
     $('.js-insurance').html(results.sort());
-    console.log('displayInsurancesResponse ran');
 }
 
-
+// compile doctor profile
 function generateDoctorProfile() {
     practice_location = {};
     practice_name = "";
-    console.log("generateDoctorProfile ran");
     $('.js-search-results').on('click', '.js-more', function (event) {
-        $('.modal').on('shown.bs.modal', function() {
+        $('.modal').on('shown.bs.modal', function () {
             $(this).find('[autofocus]').focus();
-          });
-          openTab("Bio");
+        });
+        openTab("Bio");
         // document.getElementById('Bio').focus();
         event.preventDefault();
         $('.js-profile').show();
@@ -480,14 +484,15 @@ function generateDoctorProfile() {
             lng: parseFloat(practice_long)
         }
         practice_name = $(this).attr("practice");
-        displayDoctorProfile(image, firstname, lastname, title, practice, 
-            address, address2, contact, city, state, zip, profile_bio, 
+        displayDoctorProfile(image, firstname, lastname, title, practice,
+            address, address2, contact, city, state, zip, profile_bio,
             profile_insurance);
     });
 }
 
-function displayDoctorProfile(image, firstname, lastname, title, 
-    practice, address, address2, contact, city, state, zip, profile_bio, 
+// display doctor profile
+function displayDoctorProfile(image, firstname, lastname, title,
+    practice, address, address2, contact, city, state, zip, profile_bio,
     profile_insurance) {
     $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
     $('.js-profile-name').html(`${firstname} ${lastname}`);
@@ -503,6 +508,7 @@ function displayDoctorProfile(image, firstname, lastname, title,
     $('.js-profile-insurance').html(`${profile_insurance}`);
 }
 
+// open modal tab
 function openTab(tabName) {
     var i;
     var x = document.getElementsByClassName("profile-tab");
@@ -512,7 +518,7 @@ function openTab(tabName) {
     document.getElementById(tabName).style.display = "block";
 }
 
-// listens for form submission
+// listen for form submission
 function watchSubmit() {
     $('.js-search-form').submit(event => {
         event.preventDefault();
@@ -529,6 +535,5 @@ function watchSubmit() {
         };
         const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
         getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
-        console.log("watchSubmit ran", range_clean);
     });
 }
