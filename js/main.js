@@ -38,7 +38,8 @@ function initMap(practice_location, practice_name) {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 infoWindow = new google.maps.InfoWindow({
-                    map: map
+                    map: map,
+                    pixelOffset: new google.maps.Size(0,-35)
                 });
                 pos = {
                     lat: position.coords.latitude,
@@ -46,13 +47,15 @@ function initMap(practice_location, practice_name) {
                 };
                 infoWindow.setPosition(pos);
                 infoWindow.setContent(`Found your location`);
+                
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
                     title: "Your location"
                 });
                 infoWindow2 = new google.maps.InfoWindow({
-                    map: map
+                    map: map,
+                    pixelOffset: new google.maps.Size(0,-35)
                 });
                 infoWindow2.setPosition(practice_location);
                 infoWindow2.setContent(practice_name);
@@ -167,7 +170,7 @@ function getDoctorHtmlString(result) {
                     <h3 class="name">${result.profile.first_name} ${result.profile.last_name}, ${result.profile.title}</h3>
                     <p class="profession">${result.practices[0].name}</p>
 
-                    <p class="text-center">${result.specialties[0].name}</p>
+                    <p class="text-center"><div class="card-specialty">${result.specialties[0].name}</div></p>
                     <p class="text-center"><div class="distance">${Math.round(result.practices[0].distance)} miles from you</div></p> 
                 </div>
                 <div class="footer">
@@ -223,6 +226,22 @@ function generateInsuranceOptionElement(result) {
     `;
 }
 
+shorten_options = {
+    namespace: 'shorten',
+    chars: 200,
+    ellipses: '...',
+    more: '',
+    less: 'less'
+  };
+
+  specialty_options = {
+    namespace: 'shorten',
+    chars: 50,
+    ellipses: '...',
+    more: '',
+    less: 'less'
+  };
+
 // parses doctors endpoint response data
 function displayResponseData(response) {
     if (response.data.length == 0) {
@@ -237,7 +256,9 @@ function displayResponseData(response) {
     $('.js-search-results').html(results);
 
     $('.js-search-results').show();
-    $('.bio').shorten();
+    $.shorten.setDefaults()
+    $('.bio').shorten(shorten_options);
+    $('.card-specialty').shorten(specialty_options);
 }
 
 /**
@@ -431,7 +452,11 @@ function generateDoctorProfile() {
     practice_name = "";
     console.log("generateDoctorProfile ran");
     $('.js-search-results').on('click', '.js-more', function (event) {
-        document.getElementById('Bio').focus();
+        $('.modal').on('shown.bs.modal', function() {
+            $(this).find('[autofocus]').focus();
+          });
+          openTab("Bio");
+        // document.getElementById('Bio').focus();
         event.preventDefault();
         $('.js-profile').show();
         $('navbar-header').show();

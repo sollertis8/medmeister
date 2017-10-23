@@ -28,14 +28,15 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+        
     <link href="css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="css/rotating-card.css" rel="stylesheet" />
     <link rel="stylesheet" href="jquery-shorten-js/dist/css/shorten.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/icons.css" />
     <link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -154,7 +155,7 @@
                 </p>
                 <p>
                     <label for="insurance">Select Insurance Plan: </label>
-                    <select class="insurance js-insurance">
+                    <select required class="insurance js-insurance">
                     </select>
                 </p>
                 <p>
@@ -172,7 +173,7 @@
                     </select>
                 </p>
 
-                <button type="submit">Search</button>
+                <button type="submit" id="submit" class="btn btn-info btn-lg"><i class="fa fa-binoculars" aria-hidden="true"></i> Find a Doctor</button>
             </form>
 
             <div class="col-lg-12">

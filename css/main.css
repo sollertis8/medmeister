@@ -17,6 +17,12 @@
     padding: 10px;
 }
 
+.kicon-search{
+    color: #fff;
+}
+
+
+
 .container-fluid {
     height: 100%;
     color: #2e3344;
@@ -117,8 +123,12 @@ h2 {
     text-align: center;
 }
 
-button {
-    color: #000000 !important;
+button #submit{
+    color: #ffffff !important;
+    background-color: #be91e2;
+    /* border-radius: 15px; */
+    /* border: 5px solid #306770; */
+    padding: 5px;
 }
 
 /* .map {
@@ -204,6 +214,11 @@ body {
 
 .specialty {
     color: #000000 !important;
+    
+}
+
+.card-specialty {
+    text-align: center;
 }
 
 .insurance {

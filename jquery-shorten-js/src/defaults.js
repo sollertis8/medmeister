@@ -1,6 +1,6 @@
 export default {
   namespace: 'shorten',
-  chars: 300,
+  chars: 200,
   ellipses: '...',
   more: '',
   less: 'less'
