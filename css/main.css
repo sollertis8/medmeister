@@ -126,10 +126,39 @@ button #submit {
     padding: 5px;
 }
 
+.search-parent {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.search-parent .center-wrapper {
+    position: absolute;
+    left: 50%;
+}
+
+.search-parent .center-wrapper .search-form {
+    position: relative;
+    left: -50%;
+}
+
 .search-form {
     margin: 0 auto;
     padding: 80px;
     font-size: 1.5em;
+    background-image: url("../images/steth.jpg") !important;
+    background-repeat: no-repeat;
+}
+
+.search-results {
+    top: 400px;
+    display: block;
+    position: absolute;
+    margin: 30px !important;
+}
+
+.results-container {
+    position: relative;
+    top: 400px;
 }
 
 input {
@@ -162,8 +191,7 @@ body {
     font-weight: 300;
     background-color: #f6f6f6 !important;
     margin: 0 !important;
-    background-image: url("../images/background-2.jpg") !important;
-    background-size: 100% 100%;
+    background-size: 25% 25%;
 }
 
 ::selection {
@@ -283,11 +311,16 @@ label {
     display: inline-block;
     width: 100%;
     background-color: #fafafa;
-    color: #3a3f51;
+    /* color: #3a3f51; */
+    color: #5aceeb;
     padding: 0px 0px 0px 200px;
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
+}
+
+#map_canvas {
+    background: transparent url(images/ajax-loader.gif) no-repeat center center;
 }
 
 .modal label {
