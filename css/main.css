@@ -156,6 +156,10 @@ button #submit {
     margin: 30px !important;
 }
 
+.no-results {
+    font-size: 1.5em;
+}
+
 .results-container {
     position: relative;
     top: 400px;
@@ -187,7 +191,7 @@ li {
 
 body {
     font-family: 'Lato', Calibri, Arial, sans-serif;
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-weight: 300;
     background-color: #f6f6f6 !important;
     margin: 0 !important;
@@ -203,6 +207,7 @@ body {
     height: 400px;
     width: 100%;
     color: #000000;
+    display:block;
 }
 
 #profile-map {
@@ -298,6 +303,7 @@ label {
 
 .modal {
     background-color: rgba(58, 63, 81, .5) !important;
+    min-width: 360px;
 }
 
 .main-profile-content {
@@ -312,7 +318,7 @@ label {
     width: 100%;
     background-color: #fafafa;
     /* color: #3a3f51; */
-    color: #5aceeb;
+    color: #5ab6eb;
     padding: 0px 0px 0px 200px;
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
@@ -320,11 +326,11 @@ label {
 }
 
 #map_canvas {
-    background: transparent url(images/ajax-loader.gif) no-repeat center center;
+    background: transparent url(../images/ajax-loader.gif) no-repeat center center;
 }
 
 .modal label {
-    color: rgb(195, 192, 224);
+    color: rgb(117, 107, 185);
 }
 
 .profile-bio {

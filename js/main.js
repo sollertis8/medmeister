@@ -26,11 +26,12 @@ $(this).delay(1000).queue(function () {
 });
 
 var pos;
+var map;
 
 // initialize google maps
 function initMap(practice_location, practice_name) {
     var mapCenter = new google.maps.LatLng(33.7490, -84.3880); //Google map Coordinates
-    var map = new google.maps.Map($("#map")[0], {
+     map = new google.maps.Map($("#map")[0], {
         center: mapCenter,
         zoom: 9
     });
@@ -246,7 +247,7 @@ specialty_options = {
 // parses doctors endpoint response data
 function displayResponseData(response) {
     if (response.data.length == 0) {
-        $('.js-search-results').html("No results, search again...");
+        $('.js-search-results').html(`<div class="no-results">No results, search again...</div>`);
         return
     }
     const results = response.data.map((item, index) => {
@@ -273,6 +274,7 @@ function normalizeResultData(data) {
     let obj = {
         profile: getProfileFromDoctorData(data),
         practices: getPracticesFromDoctorData(data),
+        phones: formatPhoneNumber(data),
         insurances: getInsurancesFromDoctorData(data),
         specialties: getSpecialtiesFromDoctorData(data),
         licenses: getLicensesFromDoctorData(data),
@@ -298,6 +300,26 @@ function getProfileFromDoctorData(data) {
 
     return profile
 }
+
+
+function formatPhoneNumber(data) {
+    data.practices.map(item => {
+        let practiceKeys = Object.keys(item)
+        let phones = {
+            phones: item.phones
+        }
+         clean_number = (""+phones.phones).replace(/\D/g, '');
+    var m = clean_number.match(/^(\d{3})(\d{3})(\d{4})$/);
+    phones = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+    practices.push(phones)
+    return phones;
+        
+    })
+    console.log('formatPhoneNumber ran');
+    console.log (clean_number);
+
+    
+  }
 
 /**
  * 
@@ -428,15 +450,22 @@ function getSpecialtiesFromDoctorData(data) {
  * @param {object} data
  */
 function getLicensesFromDoctorData(data) {
-    licenses = []
+    licenses = [];
+    if (data.licenses.length != 0) {
     data.licenses.map(item => {
         licenseKeys = Object.keys(item)
-        licenses.push({
-            state: (licenseKeys.includes('state') ? item.state : "Unknown")
+           licenses.push({
+            state: (licenseKeys.includes('state') ? item.state : "No License Info Available")
         })
-    })
+        })
+     } else {
+            licenses.push({
+            state: "No License Info Available"})
+        }
     return licenses
-}
+    }
+    
+
 
 // display specialty response
 function displaySpecialtyResponse(response) {
@@ -455,6 +484,7 @@ function displayInsurancesResponse(response) {
 function generateDoctorProfile() {
     practice_location = {};
     practice_name = "";
+    
     $('.js-search-results').on('click', '.js-more', function (event) {
         $('.modal').on('shown.bs.modal', function () {
             $(this).find('[autofocus]').focus();
