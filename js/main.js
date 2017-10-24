@@ -31,7 +31,7 @@ var map;
 // initialize google maps
 function initMap(practice_location, practice_name) {
     var mapCenter = new google.maps.LatLng(33.7490, -84.3880); //Google map Coordinates
-     map = new google.maps.Map($("#map")[0], {
+    map = new google.maps.Map($("#map")[0], {
         center: mapCenter,
         zoom: 9
     });
@@ -301,25 +301,20 @@ function getProfileFromDoctorData(data) {
     return profile
 }
 
-
 function formatPhoneNumber(data) {
     data.practices.map(item => {
         let practiceKeys = Object.keys(item)
         let phones = {
             phones: item.phones
         }
-         clean_number = (""+phones.phones).replace(/\D/g, '');
-    var m = clean_number.match(/^(\d{3})(\d{3})(\d{4})$/);
-    phones = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
-    practices.push(phones)
-    return phones;
-        
-    })
-    console.log('formatPhoneNumber ran');
-    console.log (clean_number);
+        clean_number = ("" + phones.phones).replace(/\D/g, '');
+        var m = clean_number.match(/^(\d{3})(\d{3})(\d{4})$/);
+        phones = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+        practices.push(phones)
+        return phones;
 
-    
-  }
+    })
+}
 
 /**
  * 
@@ -452,19 +447,20 @@ function getSpecialtiesFromDoctorData(data) {
 function getLicensesFromDoctorData(data) {
     licenses = [];
     if (data.licenses.length != 0) {
-    data.licenses.map(item => {
-        licenseKeys = Object.keys(item)
-           licenses.push({
-            state: (licenseKeys.includes('state') ? item.state : "No License Info Available")
-        })
-        })
-     } else {
+        data.licenses.map(item => {
+            licenseKeys = Object.keys(item)
             licenses.push({
-            state: "No License Info Available"})
-        }
-    return licenses
+                state: (licenseKeys.includes('state') ? item.state : "No License Info Available")
+            })
+        })
+    } else {
+        licenses.push({
+            state: "No License Info Available"
+        })
     }
-    
+    return licenses
+}
+
 
 
 // display specialty response
@@ -484,7 +480,7 @@ function displayInsurancesResponse(response) {
 function generateDoctorProfile() {
     practice_location = {};
     practice_name = "";
-    
+
     $('.js-search-results').on('click', '.js-more', function (event) {
         $('.modal').on('shown.bs.modal', function () {
             $(this).find('[autofocus]').focus();
