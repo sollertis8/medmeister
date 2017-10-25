@@ -30,57 +30,80 @@ MedMeister is an application that allows users to quickly find doctors near them
 	º getDataFromApi
 		• Arguments (callback)
 		• Endpoint (/doctors)
+		
 	º getSpecialties
 		• Arguments (callback)
 		• Endpoint (/specialties)
+		
 	º getInsurances
 		• Arguments (callback)
 		• Endpoint (/insurances)
+		
 
 ## Display Functions
 	º $(document).ready  - starts app when document ready
+	
 	º watchSubmit - listens for user submission
+	
 	º displayResponseData - displays doctor results to user
 		• Arguments: (response)
+		
 	º displayDoctorProfile  - renders doctor profile to user
 		• Arguments: (image, firstname, lastname, title, practice,
             		     address, address2, contact, city, state, zip, 
 			     profile_bio, profile_insurance)
+			     
 	º displaySpecialtyResponse - renders specialty dropdown
 		Arguments: (response)
+		
 	º displayInsurancesResponse - renders insurances dropdown
 		Arguments: (response)
+		
 	
 
 ## Data Manipulation Functions
 	º initMap - initializes google maps
 		• Arguments: (practice_location, practice_name)
+		
 	º getPracticesFromDoctorData - sanitizes practice information received from getDataFromApi function API request
 		• Arguments: (data)
+		
 	º getPracticeVisitAddress - sanitizes practice visit address received from getDataFromApi function API request
 		• Arguments: (practice)
+		
 	º getInsurancesFromDoctorData - sanitizes accepted insurance data received from API request
 		• Arguments: (data)
+		
 	º getInsuranceAccepted - maps logos to sanitized accepted insurance data
 		• Arguments: (data)
+		
 	º getSpecialtiesFromDoctorData - sanitizes specialty information received from API request
 		• Arguments: (data)
+		
 	º getLicensesFromDoctorData - sanitizes licenses information received from API request
 		• Arguments: (data)
+		
 	º normalizeResultData - normalizes API response data
 		• Arguments: (data)
+		
 	º generateInsuranceOptionElement - creates insurance option element for insurances dropdown
 		• Arguments: (result)
+		
 	º generateSpecialtyOptionElement - creates specialty option element for specialties dropdown
 		• Arguments: (result)
+		
 	º generateDoctorProfile - generates doctor profile data to be displayed to the user
 		• No arguments taken
+		
 	º openTab - controls modal tabs
 		• Arguments: (tabName)
+		
 	º getProfileFromDoctorData - sanitizes doctor api response data
 		• Arguments: (data)
+		
 	º formatPhoneNumber - formats the practice phone number received from getDataFromApi function API request
 		• Arguments: (phone_numbers)
+		
 	
 
 ## Future features
