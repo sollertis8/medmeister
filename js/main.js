@@ -107,8 +107,8 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
             insurance_uid: `${insurance}`,
             user_location: `${user_location}`,
             location: `${location}`,
-            skip: '2',
-            limit: '12',
+            skip: '0',
+            limit: '30',
             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
         },
         url: 'https://api.betterdoctor.com/2016-03-01/doctors',
@@ -274,7 +274,6 @@ function normalizeResultData(data) {
     let obj = {
         profile: getProfileFromDoctorData(data),
         practices: getPracticesFromDoctorData(data),
-        phones: formatPhoneNumber(data),
         insurances: getInsurancesFromDoctorData(data),
         specialties: getSpecialtiesFromDoctorData(data),
         licenses: getLicensesFromDoctorData(data),
@@ -295,23 +294,23 @@ function getProfileFromDoctorData(data) {
         first_name: (profileKeys.includes('first_name') ? data.profile.first_name : ""),
         last_name: (profileKeys.includes('last_name') ? data.profile.last_name : ""),
         title: (profileKeys.includes('title') ? data.profile.title : ""),
-        bio: (profileKeys.includes('bio') ? data.profile.bio : "No Bio Available")
+        bio: (data.profile.bio.length !=0 ? data.profile.bio : "No Bio Available")
     }
 
     return profile
 }
 
-function formatPhoneNumber(data) {
-    data.practices.map(item => {
+function formatPhoneNumber(phone_numbers) {
+    phone_numbers.map(item => {
         let practiceKeys = Object.keys(item)
-        let phones = {
-            phones: item.phones
+        let numbers = {
+            phone: item
         }
-        clean_number = ("" + phones.phones).replace(/\D/g, '');
+        clean_number = ("" + numbers.phone.number).replace(/\D/g, '');
         var m = clean_number.match(/^(\d{3})(\d{3})(\d{4})$/);
-        phones = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
-        practices.push(phones)
-        return phones;
+        cleaned_number = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+        phones.push({number: cleaned_number})
+        return practices;
 
     })
 }
@@ -323,13 +322,14 @@ function formatPhoneNumber(data) {
  */
 function getPracticesFromDoctorData(data) {
     // assume the response has a practices element and that it is an array
-    practices = []
+    practices = [];
+    phones=[];
     data.practices.map(item => {
         let practiceKeys = Object.keys(item)
         let practice = {
             name: (practiceKeys.includes('name') ? item.name : ""),
             visit_address: getPracticeVisitAddress(item),
-            phones: item.phones,
+            phones: getFormattedPhones(data),
             distance: (practiceKeys.includes('distance') ? item.distance : 0),
             lat: (practiceKeys.includes('lat') ? item.lat : ""),
             lon: (practiceKeys.includes('lon') ? item.lon : "")
@@ -350,6 +350,16 @@ function getPracticesFromDoctorData(data) {
     }
     return practices
 }
+
+function getFormattedPhones(data) {
+    data.practices.map(item => {
+            let phoneKeys = Object.keys(item)
+            let phone = {
+                number: formatPhoneNumber(item.phones)
+            }  
+        })
+       return phones 
+    }
 
 /**
  * 
