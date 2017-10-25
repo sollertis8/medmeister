@@ -368,3 +368,7 @@ label {
     text-align: center;
     overflow: scroll;
 }
+
+.js-profile-insurance {
+    font-size: 3em;
+}

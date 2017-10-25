@@ -108,7 +108,7 @@ function getDataFromApi(specialty, insurance, user_location, location, callback)
             user_location: `${user_location}`,
             location: `${location}`,
             skip: '0',
-            limit: '30',
+            limit: '15',
             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
         },
         url: 'https://api.betterdoctor.com/2016-03-01/doctors',
@@ -294,7 +294,7 @@ function getProfileFromDoctorData(data) {
         first_name: (profileKeys.includes('first_name') ? data.profile.first_name : ""),
         last_name: (profileKeys.includes('last_name') ? data.profile.last_name : ""),
         title: (profileKeys.includes('title') ? data.profile.title : ""),
-        bio: (data.profile.bio.length !=0 ? data.profile.bio : "No Bio Available")
+        bio: (data.profile.bio.length != 0 ? data.profile.bio : "No Bio Available")
     }
 
     return profile
@@ -309,7 +309,9 @@ function formatPhoneNumber(phone_numbers) {
         clean_number = ("" + numbers.phone.number).replace(/\D/g, '');
         var m = clean_number.match(/^(\d{3})(\d{3})(\d{4})$/);
         cleaned_number = (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
-        phones.push({number: cleaned_number})
+        phones.push({
+            number: cleaned_number
+        })
         return practices;
 
     })
@@ -323,7 +325,7 @@ function formatPhoneNumber(phone_numbers) {
 function getPracticesFromDoctorData(data) {
     // assume the response has a practices element and that it is an array
     practices = [];
-    phones=[];
+    phones = [];
     data.practices.map(item => {
         let practiceKeys = Object.keys(item)
         let practice = {
@@ -353,13 +355,13 @@ function getPracticesFromDoctorData(data) {
 
 function getFormattedPhones(data) {
     data.practices.map(item => {
-            let phoneKeys = Object.keys(item)
-            let phone = {
-                number: formatPhoneNumber(item.phones)
-            }  
-        })
-       return phones 
-    }
+        let phoneKeys = Object.keys(item)
+        let phone = {
+            number: formatPhoneNumber(item.phones)
+        }
+    })
+    return phones
+}
 
 /**
  * 
@@ -404,7 +406,7 @@ function getInsuranceAccepted(data) {
                 logo = "<img src='logos/bcbs.png' style='width: 25%; height: 25%;' />";
                 break;
             case 'Cigna':
-                logo = "<img src='logos/cigna.png' style='width: 25%; height: 25%;' />";
+                logo = "<img src='logos/cigna.png' style='width: 20%; height: 20%;' />";
                 break;
             case 'EmblemHealth':
                 logo = "<img src='logos/emblemhealth.png' style='width: 25%; height: 25%;' />";
@@ -419,7 +421,7 @@ function getInsuranceAccepted(data) {
                 logo = "<img src='logos/medicare.jpg' style='width: 25%; height: 25%;' />";
                 break;
             case 'Multiplan':
-                logo = "<img src='logos/multiplan.gif' style='width: 25%; height: 25%;' />";
+                logo = "<img src='logos/multiplan.gif' style='width: 35%; height: 35%;' />";
                 break;
             case 'QualCare':
                 logo = "<img src='logos/qualcare.jpg' style='width: 25%; height: 25%;' />";
@@ -427,8 +429,26 @@ function getInsuranceAccepted(data) {
             case 'United Healthcare':
                 logo = "<img src='logos/united_healthcare.png' style='width: 25%; height: 25%;' />";
                 break;
+            case 'Magnacare':
+                logo = "<img src='logos/magnacare.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'VSP':
+                logo = "<img src='logos/vsp.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'LA Care Health':
+                logo = "<img src='logos/la_care.png' style='width: 15%; height: 15%;' />";
+                break;
+            case 'HealthNet':
+                logo = "<img src='logos/health_net.png' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Western Health':
+                logo = "<img src='logos/western_healt.jpg' style='width: 25%; height: 25%;' />";
+                break;
+            case 'Western Health Advantage':
+                logo = "<img src='logos/western-health-advantage.png' style='width: 50%; height: 50%;' />";
+                break;
             default:
-                image = i;
+                logo = unique_insurance_accepted[i];
         }
         insurance_logos.push(logo);
     }
