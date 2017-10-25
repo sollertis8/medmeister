@@ -491,8 +491,6 @@ function getLicensesFromDoctorData(data) {
     return licenses
 }
 
-
-
 // display specialty response
 function displaySpecialtyResponse(response) {
     const results = response.data.map((item, index) => generateSpecialtyOptionElement(item));
