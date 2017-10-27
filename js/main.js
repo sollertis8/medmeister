@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 // delay second call to api to circumvent access time limit
-$(this).delay(1000).queue(function () {
+$(this).delay(1300).queue(function () {
     function getInsurances(callback) {
         const settings = {
             data: {
