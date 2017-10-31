@@ -1,4 +1,692 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 411px) {
+    /* Styles */
+
+    ul{
+        top: 60px;
+        background-color: #3a3f51;
+        width: 100% !important;
+        height: 200px !important;
+        /* position: fixed; */
+        display: block;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+
+
+    .nav-modal {
+        display: block;
+        position: relative;
+        /* top: 100px; */
+        width: 100%;
+        background-color: #fafafa;
+        /* color: #3a3f51; */
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        /* margin-top: 100px !important; */
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+
+    
+
+    .container-fluid {
+        height: 100%;
+        max-width: 320px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+        /* padding-top: 40px; */
+    }
+
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    .search-parent .center-wrapper {
+        position: absolute;
+        left: 50%;
+    }
+    
+    .search-parent .center-wrapper .search-form {
+        position: relative;
+        left: -50%;
+    }
+
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 20px 20px !important; 
+        /* font-size: 1.5em; */
+        max-width: 320px;
+        height: 260px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+
+    .search-results {
+        top: 0;
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+        /* overflow: scroll; */
+    }
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    }
+    
+    /* Smartphones (landscape) ----------- */
+    @media only screen and (min-width : 321px) {
+    /* Styles */
+    }
+    
+    /* Smartphones (portrait) ----------- */
+    @media only screen and (max-width : 320px) {
+    /* Styles */
+    }
+    
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+    }
+    
+    /* iPads (landscape) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+    }
+    
+    /* iPads (portrait) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+    }
+    /**********
+    iPad 3
+    **********/
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+    }
+    /* Desktops and laptops ----------- */
+    @media only screen  and (min-width : 1224px) {
+    /* Styles */
+    }
+    
+    /* Large screens ----------- */
+    @media only screen  and (min-width : 1824px) {
+    /* Styles */
+    }
+    
+    /* iPhone 4 ----------- */
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+
+    
+
+    }
+    
+    @media only screen and (min-device-width : 320px) and (max-device-width : 350px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+    /* .container-fluid {
+        height: 100%;
+        max-width: 350px !important;
+        min-width: 320px;
+        color: #2e3344;
+        padding-top: 80px;
+    } */
+    
+    /* .search-form { */
+        /* margin: 0 auto; */
+        /* padding: 20px 0 20px 20px !important;  */
+        /* font-size: .5em; */
+        /* max-width: 350px; */
+        /* min-width: 300px; */
+        /* background-image: url("../images/steth.jpg") !important; */
+        /* background-size: 100%; */
+        /* background-repeat: no-repeat; */
+        /* text-align: center; */
+    /* } */
+    
+    /* button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    } */
+    }
+    
+    /* iPhone 5 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    /* iPhone 6 ----------- */
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    .container-fluid {
+        height: 100%;
+        max-width: 375px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+        /* padding-top: 40px; */
+    }
+
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    .search-parent .center-wrapper {
+        position: absolute;
+        left: 50%;
+    }
+    
+    .search-parent .center-wrapper .search-form {
+        position: relative;
+        left: -50%;
+    }
+
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 10px 20px !important; 
+        /* font-size: .5em; */
+        max-width: 375px;
+        height: 200px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 2em;
+    padding: 15px;
+}
+
+.card-specialty {
+    font-size: 2em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1.5em;
+}
+
+.location {
+    font-size: 1.5em;
+    color: #000000 !important;
+}
+    
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+
+    .search-results {
+        top: 0;
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+        /* overflow: scroll; */
+    }
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 200px !important;
+
+    }
+
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    }
+    
+    /* iPhone 6+ ----------- */
+    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+
+    }
+    
+    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : portrait) {
+    /* Styles */
+
+   ul{
+        top: 60px;
+        background-color: #3a3f51;
+        width: 100% !important;
+        height: 200px !important;
+        /* position: fixed; */
+        display: block;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+
+
+    .nav-modal {
+        display: block;
+        position: relative;
+        /* top: 100px; */
+        width: 100%;
+        background-color: #fafafa;
+        /* color: #3a3f51; */
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        /* margin-top: 100px !important; */
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+
+    
+
+    .container-fluid {
+        height: 100%;
+        max-width: 412px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+        /* padding-top: 40px; */
+    }
+
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    .search-parent .center-wrapper {
+        position: absolute;
+        left: 50%;
+    }
+    
+    .search-parent .center-wrapper .search-form {
+        position: relative;
+        left: -50%;
+    }
+
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 20px 20px !important; 
+        /* font-size: 1.5em; */
+        max-width: 412px;
+        height: 260px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+
+    .search-results {
+        top: 0;
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+        /* overflow: scroll; */
+    }
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    }
+    
+    /* Samsung Galaxy S3 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    /* Samsung Galaxy S4 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    }
+    
+    /* Samsung Galaxy S5 ----------- */
+    @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    
+
+    }
+    
+    
+    @media only screen and (min-device-width: 360px) and (max-device-height: 670px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    ul{
+        top: 60px;
+        background-color: #3a3f51;
+        width: 100% !important;
+        height: 200px !important;
+        /* position: fixed; */
+        display: block;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+
+
+    .nav-modal {
+        display: block;
+        position: relative;
+        /* top: 100px; */
+        width: 100%;
+        background-color: #fafafa;
+        /* color: #3a3f51; */
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        /* margin-top: 100px !important; */
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+
+    
+
+    .container-fluid {
+        height: 100%;
+        max-width: 360px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+        /* padding-top: 40px; */
+    }
+
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    .search-parent .center-wrapper {
+        position: absolute;
+        left: 50%;
+    }
+    
+    .search-parent .center-wrapper .search-form {
+        position: relative;
+        left: -50%;
+    }
+
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 20px 20px !important; 
+        /* font-size: 1.5em; */
+        max-width: 360px;
+        height: 260px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+
+    .search-results {
+        top: 0;
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+        /* overflow: scroll; */
+    }
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+
+    }
+    
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
     font-weight: normal;
     font-style: normal;
@@ -91,6 +779,15 @@ ul {
 }
 
 .line {
+    width: 100%;
+    height: 2px;
+    margin: 10px 0;
+    overflow: hidden;
+    font-size: 0;
+    background-color: #2e3344;
+}
+
+.mobile-line {
     width: 100%;
     height: 2px;
     margin: 10px 0;
@@ -247,8 +944,9 @@ body {
 }
 
 .profile-practice {
-    text-align: center;
+    text-align: center !important;
 }
+
 
 .practice-address {
     text-align: center;
@@ -285,7 +983,15 @@ span {
     text-align: center;
 }
 
+.mobile-address {
+    text-align: center;
+}
+
 .practice {
+    text-align: center;
+}
+
+.mobile-practice {
     text-align: center;
 }
 
@@ -305,6 +1011,11 @@ label {
 .modal {
     background-color: rgba(58, 63, 81, .5) !important;
     min-width: 360px;
+}
+
+.close {
+    float: right;
+    margin: 5px 7px 0 0 !important;
 }
 
 .main-profile-content {
@@ -371,4 +1082,16 @@ label {
 
 .js-profile-insurance {
     font-size: 3em;
+}
+
+.js-doctor-distance {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.find-text {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
 }
