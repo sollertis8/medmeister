@@ -57,10 +57,14 @@ function resizeWindow() {
 
 // delay second call to api to circumvent access time limit
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(this).delay(0).queue(function () {
 =======
 $(this).delay(1300).queue(function () {
 >>>>>>> 478c84838d87d411c436f27205191585a1a3d88f
+=======
+$(this).delay(0).queue(function () {
+>>>>>>> fixed API rate limit issue and updated mobile ui
     function getInsurances(callback) {
         const settings = {
             data: {
@@ -1034,14 +1038,22 @@ function generateDoctorProfile() {
         practice_name = $(this).attr("practice");
         displayDoctorProfile(image, firstname, lastname, title, practice,
             address, address2, contact, city, state, zip, profile_bio,
+<<<<<<< HEAD
             profile_insurance, doctor_distance);
+=======
+            profile_insurance,doctor_distance);
+>>>>>>> fixed API rate limit issue and updated mobile ui
     });
 }
 
 // display doctor profile
 function displayDoctorProfile(image, firstname, lastname, title,
     practice, address, address2, contact, city, state, zip, profile_bio,
+<<<<<<< HEAD
     profile_insurance, doctor_distance) {
+=======
+    profile_insurance,doctor_distance) {
+>>>>>>> fixed API rate limit issue and updated mobile ui
     $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
     $('.js-profile-name').html(`${firstname} ${lastname}`);
     $('.js-profile-title').html(`${title}`);

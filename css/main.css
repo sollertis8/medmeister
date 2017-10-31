@@ -1,8 +1,15 @@
 /* Smartphones (portrait and landscape) ----------- */
+<<<<<<< HEAD
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 411px) {
     /* Styles */
     ul {
+=======
+@media only screen and (min-device-width : 320px) and (max-device-width : 411px) {
+    /* Styles */
+
+    ul{
+>>>>>>> fixed API rate limit issue and updated mobile ui
         top: 60px;
         background-color: #3a3f51;
         width: 100% !important;
@@ -13,6 +20,11 @@
         position: static !important;
         margin: 0 auto !important;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .nav-modal {
         display: block;
         position: relative;
@@ -26,6 +38,10 @@
         -moz-box-shadow: 0 8px 6px -6px #999;
         box-shadow: 0 8px 6px -6px #999;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .main-profile-content {
         display: block;
         height: 500px;
@@ -34,6 +50,12 @@
         padding: 0px 20px 20px 20px !important;
         overflow: auto;
     }
+<<<<<<< HEAD
+=======
+
+    
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .container-fluid {
         height: 100%;
         max-width: 320px !important;
@@ -42,31 +64,52 @@
         color: #2e3344;
         /* padding-top: 40px; */
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent {
         position: relative;
         margin-bottom: 0;
         margin-top: 10px;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper {
         position: absolute;
         left: 50%;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper .search-form {
         position: relative;
         left: -50%;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .find-text {
         margin-top: 10px;
     }
     .search-form {
         margin: 0 auto;
+<<<<<<< HEAD
         padding: 20px 0 20px 20px !important;
+=======
+        padding: 20px 0 20px 20px !important; 
+>>>>>>> fixed API rate limit issue and updated mobile ui
         /* font-size: 1.5em; */
         max-width: 320px;
         height: 260px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
+<<<<<<< HEAD
         background-repeat: no-repeat;
     }
     .content {
@@ -101,11 +144,59 @@
         font-size: 1em;
         color: #000000 !important;
     }
+=======
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-results {
         top: 0;
         display: block;
@@ -113,6 +204,7 @@
         margin: 0 !important;
         /* overflow: scroll; */
     }
+<<<<<<< HEAD
     .no-results {
         font-size: 1.5em;
     }
@@ -120,10 +212,24 @@
         position: relative;
         top: 260px !important;
     }
+=======
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .col-lg-12 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+<<<<<<< HEAD
 }
 
 
@@ -196,6 +302,64 @@
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 350px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+=======
+
+    }
+    
+    /* Smartphones (landscape) ----------- */
+    @media only screen and (min-width : 321px) {
+    /* Styles */
+    }
+    
+    /* Smartphones (portrait) ----------- */
+    @media only screen and (max-width : 320px) {
+    /* Styles */
+    }
+    
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+    }
+    
+    /* iPads (landscape) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+    }
+    
+    /* iPads (portrait) ----------- */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+    }
+    /**********
+    iPad 3
+    **********/
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+    }
+    /* Desktops and laptops ----------- */
+    @media only screen  and (min-width : 1224px) {
+    /* Styles */
+    }
+    
+    /* Large screens ----------- */
+    @media only screen  and (min-width : 1824px) {
+    /* Styles */
+    }
+    
+    /* iPhone 4 ----------- */
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+
+    
+
+    }
+    
+    @media only screen and (min-device-width : 320px) and (max-device-width : 350px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+>>>>>>> fixed API rate limit issue and updated mobile ui
     /* Styles */
     /* .container-fluid {
         height: 100%;
@@ -204,6 +368,7 @@
         color: #2e3344;
         padding-top: 80px;
     } */
+<<<<<<< HEAD
     /* .search-form { */
     /* margin: 0 auto; */
     /* padding: 20px 0 20px 20px !important;  */
@@ -215,11 +380,27 @@
     /* background-repeat: no-repeat; */
     /* text-align: center; */
     /* } */
+=======
+    
+    /* .search-form { */
+        /* margin: 0 auto; */
+        /* padding: 20px 0 20px 20px !important;  */
+        /* font-size: .5em; */
+        /* max-width: 350px; */
+        /* min-width: 300px; */
+        /* background-image: url("../images/steth.jpg") !important; */
+        /* background-size: 100%; */
+        /* background-repeat: no-repeat; */
+        /* text-align: center; */
+    /* } */
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     /* button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     } */
+<<<<<<< HEAD
 }
 
 
@@ -241,6 +422,25 @@
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+=======
+    }
+    
+    /* iPhone 5 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    /* iPhone 6 ----------- */
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+>>>>>>> fixed API rate limit issue and updated mobile ui
     /* Styles */
     .container-fluid {
         height: 100%;
@@ -250,31 +450,52 @@
         color: #2e3344;
         /* padding-top: 40px; */
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent {
         position: relative;
         margin-bottom: 0;
         margin-top: 10px;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper {
         position: absolute;
         left: 50%;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper .search-form {
         position: relative;
         left: -50%;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .find-text {
         margin-top: 10px;
     }
     .search-form {
         margin: 0 auto;
+<<<<<<< HEAD
         padding: 20px 0 10px 20px !important;
+=======
+        padding: 20px 0 10px 20px !important; 
+>>>>>>> fixed API rate limit issue and updated mobile ui
         /* font-size: .5em; */
         max-width: 375px;
         height: 200px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
+<<<<<<< HEAD
         background-repeat: no-repeat;
     }
     .content {
@@ -304,11 +525,53 @@
         font-size: 1.5em;
         color: #000000 !important;
     }
+=======
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 2em;
+    padding: 15px;
+}
+
+.card-specialty {
+    font-size: 2em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1.5em;
+}
+
+.location {
+    font-size: 1.5em;
+    color: #000000 !important;
+}
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-results {
         top: 0;
         display: block;
@@ -316,6 +579,7 @@
         margin: 0 !important;
         /* overflow: scroll; */
     }
+<<<<<<< HEAD
     .no-results {
         font-size: 1.5em;
     }
@@ -323,10 +587,24 @@
         position: relative;
         top: 200px !important;
     }
+=======
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 200px !important;
+
+    }
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .col-lg-12 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+<<<<<<< HEAD
 }
 
 
@@ -339,6 +617,21 @@
 @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation: portrait) {
     /* Styles */
     ul {
+=======
+
+    }
+    
+    /* iPhone 6+ ----------- */
+    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+
+    }
+    
+    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : portrait) {
+    /* Styles */
+
+   ul{
+>>>>>>> fixed API rate limit issue and updated mobile ui
         top: 60px;
         background-color: #3a3f51;
         width: 100% !important;
@@ -349,6 +642,11 @@
         position: static !important;
         margin: 0 auto !important;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .nav-modal {
         display: block;
         position: relative;
@@ -362,6 +660,10 @@
         -moz-box-shadow: 0 8px 6px -6px #999;
         box-shadow: 0 8px 6px -6px #999;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .main-profile-content {
         display: block;
         height: 500px;
@@ -370,6 +672,12 @@
         padding: 0px 20px 20px 20px !important;
         overflow: auto;
     }
+<<<<<<< HEAD
+=======
+
+    
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .container-fluid {
         height: 100%;
         max-width: 412px !important;
@@ -378,31 +686,52 @@
         color: #2e3344;
         /* padding-top: 40px; */
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent {
         position: relative;
         margin-bottom: 0;
         margin-top: 10px;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper {
         position: absolute;
         left: 50%;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper .search-form {
         position: relative;
         left: -50%;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .find-text {
         margin-top: 10px;
     }
     .search-form {
         margin: 0 auto;
+<<<<<<< HEAD
         padding: 20px 0 20px 20px !important;
+=======
+        padding: 20px 0 20px 20px !important; 
+>>>>>>> fixed API rate limit issue and updated mobile ui
         /* font-size: 1.5em; */
         max-width: 412px;
         height: 260px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
+<<<<<<< HEAD
         background-repeat: no-repeat;
     }
     .content {
@@ -437,11 +766,59 @@
         font-size: 1em;
         color: #000000 !important;
     }
+=======
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-results {
         top: 0;
         display: block;
@@ -449,6 +826,7 @@
         margin: 0 !important;
         /* overflow: scroll; */
     }
+<<<<<<< HEAD
     .no-results {
         font-size: 1.5em;
     }
@@ -456,10 +834,24 @@
         position: relative;
         top: 260px !important;
     }
+=======
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .col-lg-12 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+<<<<<<< HEAD
 }
 
 
@@ -494,6 +886,40 @@
 @media only screen and (min-device-width: 360px) and (max-device-height: 670px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
     /* Styles */
     ul {
+=======
+
+    }
+    
+    /* Samsung Galaxy S3 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    }
+    
+    /* Samsung Galaxy S4 ----------- */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    }
+    
+    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    }
+    
+    /* Samsung Galaxy S5 ----------- */
+    @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    
+
+    }
+    
+    
+    @media only screen and (min-device-width: 360px) and (max-device-height: 670px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+    ul{
+>>>>>>> fixed API rate limit issue and updated mobile ui
         top: 60px;
         background-color: #3a3f51;
         width: 100% !important;
@@ -504,6 +930,11 @@
         position: static !important;
         margin: 0 auto !important;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .nav-modal {
         display: block;
         position: relative;
@@ -517,6 +948,10 @@
         -moz-box-shadow: 0 8px 6px -6px #999;
         box-shadow: 0 8px 6px -6px #999;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .main-profile-content {
         display: block;
         height: 500px;
@@ -525,6 +960,12 @@
         padding: 0px 20px 20px 20px !important;
         overflow: auto;
     }
+<<<<<<< HEAD
+=======
+
+    
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .container-fluid {
         height: 100%;
         max-width: 360px !important;
@@ -533,31 +974,52 @@
         color: #2e3344;
         /* padding-top: 40px; */
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent {
         position: relative;
         margin-bottom: 0;
         margin-top: 10px;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper {
         position: absolute;
         left: 50%;
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-parent .center-wrapper .search-form {
         position: relative;
         left: -50%;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .find-text {
         margin-top: 10px;
     }
     .search-form {
         margin: 0 auto;
+<<<<<<< HEAD
         padding: 20px 0 20px 20px !important;
+=======
+        padding: 20px 0 20px 20px !important; 
+>>>>>>> fixed API rate limit issue and updated mobile ui
         /* font-size: 1.5em; */
         max-width: 360px;
         height: 260px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
+<<<<<<< HEAD
         background-repeat: no-repeat;
     }
     .content {
@@ -592,11 +1054,59 @@
         font-size: 1em;
         color: #000000 !important;
     }
+=======
+        background-repeat: no-repeat;     
+    }
+.content {
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+.bio {
+    font-size: 1em;
+    padding: 15px;
+}
+
+.profile-bio {
+    text-align: center;
+    font-size: 1.5em;
+    overflow: scroll;
+}
+
+.card-specialty {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.distance {
+    font-size: 1em;
+    text-align: center;
+}
+
+.profession {
+    font-size: 1em;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+}
+
+.location {
+    font-size: 1em;
+    color: #000000 !important;
+}
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
     button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .search-results {
         top: 0;
         display: block;
@@ -604,6 +1114,7 @@
         margin: 0 !important;
         /* overflow: scroll; */
     }
+<<<<<<< HEAD
     .no-results {
         font-size: 1.5em;
     }
@@ -611,11 +1122,31 @@
         position: relative;
         top: 260px !important;
     }
+=======
+    
+    .no-results {
+        font-size: 1.5em;
+    }
+    
+    .results-container {
+        position: relative;
+        top: 260px !important;
+
+    }
+
+>>>>>>> fixed API rate limit issue and updated mobile ui
     .col-lg-12 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+<<<<<<< HEAD
 }
+=======
+    
+
+    }
+    
+>>>>>>> fixed API rate limit issue and updated mobile ui
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
@@ -877,6 +1408,7 @@ body {
 .profile-practice {
     text-align: center !important;
 }
+
 
 .practice-address {
     text-align: center;
