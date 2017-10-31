@@ -56,7 +56,11 @@ function resizeWindow() {
 }
 
 // delay second call to api to circumvent access time limit
+<<<<<<< HEAD
 $(this).delay(0).queue(function () {
+=======
+$(this).delay(1300).queue(function () {
+>>>>>>> 478c84838d87d411c436f27205191585a1a3d88f
     function getInsurances(callback) {
         const settings = {
             data: {
