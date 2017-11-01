@@ -56,24 +56,24 @@ function resizeWindow() {
 }
 
 // delay second call to api to circumvent access time limit
-$(this).delay(0).queue(function () {
-    function getInsurances(callback) {
-        const settings = {
-            data: {
-                skip: '0',
-                limit: '',
-                user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
-            },
-            url: 'https://api.betterdoctor.com/2016-03-01/insurances',
-            dataType: 'json',
-            type: 'GET',
-            success: callback
-        };
-        $.ajax(settings)
-    }
-    $(this).dequeue();
-    getInsurances(displayInsurancesResponse);
-});
+// $(this).delay(0).queue(function () {
+//     function getInsurances(callback) {
+//         const settings = {
+//             data: {
+//                 skip: '0',
+//                 limit: '',
+//                 user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
+//             },
+//             url: 'https://api.betterdoctor.com/2016-03-01/insurances',
+//             dataType: 'json',
+//             type: 'GET',
+//             success: callback
+//         };
+//         $.ajax(settings)
+//     }
+//     $(this).dequeue();
+//     getInsurances(displayInsurancesResponse);
+// });
 
 var pos;
 var map;
@@ -130,6 +130,11 @@ function initMap(practice_location, practice_name) {
                     // lat: 37.7749,
                     // lng: -122.4194
 
+                    //Hawaii Test
+                    // lat: 19.8968,
+                    // lng: -155.5828
+
+
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
@@ -158,11 +163,10 @@ function showDistance(data) {
 }
 
 // get doctor data from API and limit results
-function getDataFromApi(specialty, insurance, user_location, location, callback) {
+function getDataFromApi(specialty, user_location, location, callback) {
     const settings = {
         data: {
             specialty_uid: `${specialty}`,
-            insurance_uid: `${insurance}`,
             user_location: `${user_location}`,
             location: `${location}`,
             skip: '0',
@@ -685,11 +689,11 @@ function generateSpecialtyOptionElement() {
 }
 
 // generate insurance option element
-function generateInsuranceOptionElement(result) {
-    return `
-    <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
-    `;
-}
+// function generateInsuranceOptionElement(result) {
+//     return `
+//     <option value="${result.plans[0].uid}">${result.plans[0].name}</option>
+//     `;
+// }
 
 // shorten bio info on cards
 shorten_options = {
@@ -834,14 +838,18 @@ function getFormattedPhones(data) {
  */
 function getInsurancesFromDoctorData(data) {
     insurances = []
-    data.insurances.map(item => {
-        insuranceKeys = Object.keys(item)
-        insurances.push({
-            insurance_provider: (insuranceKeys.indexOf('insurance_provider') ? item.insurance_provider : {
-                name: "Unknown"
+    if (data.insurances == 'undefined') {
+        insurance_accepted.push("No insurance information available")
+    } else {
+        data.insurances.map(item => {
+            insuranceKeys = Object.keys(item)
+            insurances.push({
+                insurance_provider: (insuranceKeys.indexOf('insurance_provider') ? item.insurance_provider : {
+                    name: "Unknown"
+                })
             })
         })
-    })
+    }
     return insurances
 }
 /** @param {object} data The data in the response from the api's /doctors endpoint.
@@ -855,8 +863,13 @@ function getInsuranceAccepted(data) {
         $.each(insurance_accepted, function (i, el) {
             if ($.inArray(el, unique_insurance_accepted) === -1) unique_insurance_accepted.push(el);
         })
+
         insurance_logos = [];
         logo = "";
+    }
+    insurance_logos = [];
+    if (typeof unique_insurance_accepted == 'undefined') {
+        unique_insurance_accepted = [''];
     }
     // assign logos for elements in insurance reponse data array
     for (var i = 0; i < unique_insurance_accepted.length; i++) {
@@ -936,6 +949,9 @@ function getInsuranceAccepted(data) {
             case 'Kaiser Permanente':
                 logo = "<img src='logos/kaiser_permanente.jpg' style='width: 25%; height: 25%;' />";
                 break;
+            case '':
+                logo = "No insurance information available";
+                break;
             default:
                 logo = unique_insurance_accepted[i];
         }
@@ -943,6 +959,8 @@ function getInsuranceAccepted(data) {
     }
     return insurance_logos;
 }
+
+
 /**
  * 
  * @param {object} data 
@@ -988,10 +1006,10 @@ function displaySpecialtyResponse(response) {
 }
 
 // display insurance response
-function displayInsurancesResponse(response) {
-    const results = response.data.map((item, index) => generateInsuranceOptionElement(item));
-    $('.js-insurance').html(results.sort());
-}
+// function displayInsurancesResponse(response) {
+//     const results = response.data.map((item, index) => generateInsuranceOptionElement(item));
+//     $('.js-insurance').html(results.sort());
+// }
 
 // compile doctor profile
 function generateDoctorProfile() {
@@ -1030,14 +1048,14 @@ function generateDoctorProfile() {
         practice_name = $(this).attr("practice");
         displayDoctorProfile(image, firstname, lastname, title, practice,
             address, address2, contact, city, state, zip, profile_bio,
-            profile_insurance,doctor_distance);
+            profile_insurance, doctor_distance);
     });
 }
 
 // display doctor profile
 function displayDoctorProfile(image, firstname, lastname, title,
     practice, address, address2, contact, city, state, zip, profile_bio,
-    profile_insurance,doctor_distance) {
+    profile_insurance, doctor_distance) {
     $('.js-profile-image').html(`<img class="img-circle" src="${image}"/>`);
     $('.js-profile-name').html(`${firstname} ${lastname}`);
     $('.js-profile-title').html(`${title}`);
@@ -1069,8 +1087,8 @@ function watchSubmit() {
         event.preventDefault();
         const specialty_target = $(event.currentTarget).find('.js-specialty');
         const specialty = (specialty_target.val());
-        const insurance_target = $(event.currentTarget).find('.js-insurance');
-        const insurance = (insurance_target.val());
+        // const insurance_target = $(event.currentTarget).find('.js-insurance');
+        // const insurance = (insurance_target.val());
         const user_location = JSON.stringify(pos).replace(/[^0-9\-,.]/g, '');
         const range_target = $(event.currentTarget).find('.js-range');
         const range_target_value = range_target.val();
@@ -1079,6 +1097,6 @@ function watchSubmit() {
             range_target_value
         };
         const range_clean = JSON.stringify(range).replace(/[^0-9\-,.]/g, '');
-        getDataFromApi(specialty, insurance, user_location, range_clean, displayResponseData);
+        getDataFromApi(specialty, user_location, range_clean, displayResponseData);
     });
 }
