@@ -1,20 +1,138 @@
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 411px) {
-    /* Styles */
-
-    ul{
+@media only screen and (max-device-width: 414px) and (orientation: portrait) {
+    .mobile-ul {
         top: 60px;
-        background-color: #3a3f51;
+        background-color: #3a3f51 !important;
         width: 100% !important;
         height: 200px !important;
-        /* position: fixed; */
-        display: block;
         overflow: hidden;
         position: static !important;
         margin: 0 auto !important;
     }
+    .nav-modal {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: #fafafa;
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+    .container-fluid {
+        height: 100%;
+        max-width: 550px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+    }
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto !important;
+        padding: 20px 0 20px 20px !important;
+        max-width: 550px;
+        min-width: 515px !important;
+        height: 260px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .content {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .bio {
+        text-align: center !important;
+        font-size: 1em;
+        padding: 15px;
+    }
+    .profile-bio {
+        text-align: center;
+        font-size: 1.5em;
+        overflow: scroll;
+    }
+    .card-specialty {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+    .distance {
+        font-size: 1em;
+        text-align: center;
+    }
+    .profession {
+        font-size: 1em;
+        text-align: center;
+    }
+    .footer {
+        font-size: 1em;
+    }
+    .location {
+        font-size: 1em;
+        color: #000000 !important;
+    }
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+    .search-results {
+        display: block;
+        position: relative;
+        margin: 0 !important;
+    }
+    .no-results {
+        font-size: 1.5vw;
+    }
+    .results-container {
+        position: absolute;
+        top: 0 !important;
+    }
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .specialty {
+        color: #000000 !important;
+        font-size: 3vw !important;
+        width: 40% !important;
+    }
+    .range {
+        color: #000000;
+        font-size: 3vw !important;
+    }
+    .col-form-label {
+        color: rgb(52, 50, 75) !important;
+        font-size: 3vw !important;
+        width: 50% !important;
+    }
+}
 
-
+@media only screen and (max-width: 550px) {
+    /* Styles */
+    .mobile-ul {
+        top: 60px;
+        background-color: #3a3f51 !important;
+        width: 100% !important;
+        height: 200px !important;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
     .nav-modal {
         display: block;
         position: relative;
@@ -28,663 +146,104 @@
         -moz-box-shadow: 0 8px 6px -6px #999;
         box-shadow: 0 8px 6px -6px #999;
     }
-
     .main-profile-content {
         display: block;
         height: 500px;
         color: #3a3f51;
-        /* margin-top: 100px !important; */
         padding: 0px 20px 20px 20px !important;
         overflow: auto;
     }
-
-    
-
     .container-fluid {
         height: 100%;
-        max-width: 320px !important;
+        max-width: 550px !important;
         overflow-x: hidden;
         overflow-y: scroll;
         color: #2e3344;
-        /* padding-top: 40px; */
     }
-
     .search-parent {
         position: relative;
         margin-bottom: 0;
         margin-top: 10px;
+        width: 100%
     }
-    
-    .search-parent .center-wrapper {
-        position: absolute;
-        left: 50%;
-    }
-    
-    .search-parent .center-wrapper .search-form {
-        position: relative;
-        left: -50%;
-    }
-
     .find-text {
         margin-top: 10px;
     }
     .search-form {
         margin: 0 auto;
-        padding: 20px 0 20px 20px !important; 
-        /* font-size: 1.5em; */
-        max-width: 320px;
-        height: 260px;
-        overflow: hidden;
-        background-image: url("../images/steth.jpg") !important;
-        background-size: 100%;
-        background-repeat: no-repeat;     
-    }
-.content {
-    height: 100% !important;
-    padding: 0 !important;
-}
-
-.bio {
-    font-size: 1em;
-    padding: 15px;
-}
-
-.profile-bio {
-    text-align: center;
-    font-size: 1.5em;
-    overflow: scroll;
-}
-
-.card-specialty {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.distance {
-    font-size: 1em;
-    text-align: center;
-}
-
-.profession {
-    font-size: 1em;
-    text-align: center;
-}
-
-.footer {
-    font-size: 1em;
-}
-
-.location {
-    font-size: 1em;
-    color: #000000 !important;
-}
-    
-    button #submit {
-        color: #ffffff !important;
-        background-color: #be91e2;
-        padding: 5px;
-    }
-
-    .search-results {
-        top: 0;
-        display: block;
-        position: absolute;
-        margin: 0 !important;
-        /* overflow: scroll; */
-    }
-    
-    .no-results {
-        font-size: 1.5em;
-    }
-    
-    .results-container {
-        position: relative;
-        top: 260px !important;
-
-    }
-
-    .col-lg-12 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    }
-    
-    /* Smartphones (landscape) ----------- */
-    @media only screen and (min-width : 321px) {
-    /* Styles */
-    }
-    
-    /* Smartphones (portrait) ----------- */
-    @media only screen and (max-width : 320px) {
-    /* Styles */
-    }
-    
-    /* iPads (portrait and landscape) ----------- */
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    /* Styles */
-    }
-    
-    /* iPads (landscape) ----------- */
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-    /* Styles */
-    }
-    
-    /* iPads (portrait) ----------- */
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-    /* Styles */
-    }
-    /**********
-    iPad 3
-    **********/
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-    /* Styles */
-    }
-    
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-    /* Styles */
-    }
-    /* Desktops and laptops ----------- */
-    @media only screen  and (min-width : 1224px) {
-    /* Styles */
-    }
-    
-    /* Large screens ----------- */
-    @media only screen  and (min-width : 1824px) {
-    /* Styles */
-    }
-    
-    /* iPhone 4 ----------- */
-    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-    /* Styles */
-
-    
-
-    }
-    
-    @media only screen and (min-device-width : 320px) and (max-device-width : 350px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-    /* Styles */
-    /* .container-fluid {
-        height: 100%;
-        max-width: 350px !important;
-        min-width: 320px;
-        color: #2e3344;
-        padding-top: 80px;
-    } */
-    
-    /* .search-form { */
-        /* margin: 0 auto; */
-        /* padding: 20px 0 20px 20px !important;  */
-        /* font-size: .5em; */
-        /* max-width: 350px; */
-        /* min-width: 300px; */
-        /* background-image: url("../images/steth.jpg") !important; */
-        /* background-size: 100%; */
-        /* background-repeat: no-repeat; */
-        /* text-align: center; */
-    /* } */
-    
-    /* button #submit {
-        color: #ffffff !important;
-        background-color: #be91e2;
-        padding: 5px;
-    } */
-    }
-    
-    /* iPhone 5 ----------- */
-    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
-    }
-    
-    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
-    }
-    
-    /* iPhone 6 ----------- */
-    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
-    }
-    
-    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
-    .container-fluid {
-        height: 100%;
-        max-width: 375px !important;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        color: #2e3344;
-        /* padding-top: 40px; */
-    }
-
-    .search-parent {
-        position: relative;
-        margin-bottom: 0;
-        margin-top: 10px;
-    }
-    
-    .search-parent .center-wrapper {
-        position: absolute;
-        left: 50%;
-    }
-    
-    .search-parent .center-wrapper .search-form {
-        position: relative;
-        left: -50%;
-    }
-
-    .find-text {
-        margin-top: 10px;
-    }
-    .search-form {
-        margin: 0 auto;
-        padding: 20px 0 10px 20px !important; 
-        /* font-size: .5em; */
-        max-width: 375px;
-        height: 200px;
-        overflow: hidden;
-        background-image: url("../images/steth.jpg") !important;
-        background-size: 100%;
-        background-repeat: no-repeat;     
-    }
-.content {
-    height: 100% !important;
-    padding: 0 !important;
-}
-
-.bio {
-    font-size: 2em;
-    padding: 15px;
-}
-
-.card-specialty {
-    font-size: 2em;
-    text-align: center;
-}
-
-.distance {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.profession {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.footer {
-    font-size: 1.5em;
-}
-
-.location {
-    font-size: 1.5em;
-    color: #000000 !important;
-}
-    
-    button #submit {
-        color: #ffffff !important;
-        background-color: #be91e2;
-        padding: 5px;
-    }
-
-    .search-results {
-        top: 0;
-        display: block;
-        position: absolute;
-        margin: 0 !important;
-        /* overflow: scroll; */
-    }
-    
-    .no-results {
-        font-size: 1.5em;
-    }
-    
-    .results-container {
-        position: relative;
-        top: 200px !important;
-
-    }
-
-    .col-lg-12 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    }
-    
-    /* iPhone 6+ ----------- */
-    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
-
-    }
-    
-    @media only screen and (min-device-width: 412px) and (max-device-height: 736px) and (orientation : portrait) {
-    /* Styles */
-
-   ul{
-        top: 60px;
-        background-color: #3a3f51;
+        padding: 20px 0 20px 20px !important;
         width: 100% !important;
-        height: 200px !important;
-        /* position: fixed; */
-        display: block;
-        overflow: hidden;
-        position: static !important;
-        margin: 0 auto !important;
-    }
-
-
-    .nav-modal {
-        display: block;
-        position: relative;
-        /* top: 100px; */
-        width: 100%;
-        background-color: #fafafa;
-        /* color: #3a3f51; */
-        color: #5ab6eb;
-        padding: 0 !important;
-        -webkit-box-shadow: 0 8px 6px -6px #999;
-        -moz-box-shadow: 0 8px 6px -6px #999;
-        box-shadow: 0 8px 6px -6px #999;
-    }
-
-    .main-profile-content {
-        display: block;
-        height: 500px;
-        color: #3a3f51;
-        /* margin-top: 100px !important; */
-        padding: 0px 20px 20px 20px !important;
-        overflow: auto;
-    }
-
-    
-
-    .container-fluid {
-        height: 100%;
-        max-width: 412px !important;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        color: #2e3344;
-        /* padding-top: 40px; */
-    }
-
-    .search-parent {
-        position: relative;
-        margin-bottom: 0;
-        margin-top: 10px;
-    }
-    
-    .search-parent .center-wrapper {
-        position: absolute;
-        left: 50%;
-    }
-    
-    .search-parent .center-wrapper .search-form {
-        position: relative;
-        left: -50%;
-    }
-
-    .find-text {
-        margin-top: 10px;
-    }
-    .search-form {
-        margin: 0 auto;
-        padding: 20px 0 20px 20px !important; 
-        /* font-size: 1.5em; */
-        max-width: 412px;
+        min-width: 515px !important;
         height: 260px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
-        background-repeat: no-repeat;     
+        background-repeat: no-repeat;
     }
-.content {
-    height: 100% !important;
-    padding: 0 !important;
-}
-
-.bio {
-    font-size: 1em;
-    padding: 15px;
-}
-
-.profile-bio {
-    text-align: center;
-    font-size: 1.5em;
-    overflow: scroll;
-}
-
-.card-specialty {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.distance {
-    font-size: 1em;
-    text-align: center;
-}
-
-.profession {
-    font-size: 1em;
-    text-align: center;
-}
-
-.footer {
-    font-size: 1em;
-}
-
-.location {
-    font-size: 1em;
-    color: #000000 !important;
-}
-    
+    .content {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .bio {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+    .profile-bio {
+        text-align: center;
+        font-size: 1.5em;
+        overflow: scroll;
+    }
+    .card-specialty {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+    .distance {
+        font-size: 1em;
+        text-align: center;
+    }
+    .profession {
+        font-size: 1em;
+        text-align: center;
+    }
+    .footer {
+        font-size: 1em;
+    }
+    .location {
+        font-size: 1em;
+        color: #000000 !important;
+    }
     button #submit {
         color: #ffffff !important;
         background-color: #be91e2;
         padding: 5px;
     }
-
     .search-results {
-        top: 0;
         display: block;
         position: absolute;
         margin: 0 !important;
-        /* overflow: scroll; */
     }
-    
     .no-results {
-        font-size: 1.5em;
+        font-size: 1.5vw;
     }
-    
-    .results-container {
-        position: relative;
-        top: 260px !important;
-
-    }
-
     .col-lg-12 {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-
+    .specialty {
+        color: #000000 !important;
+        font-size: 3vw !important;
+        width: 40% !important;
     }
-    
-    /* Samsung Galaxy S3 ----------- */
-    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
+    .range {
+        color: #000000;
+        font-size: 3vw !important;
     }
-    
-    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-    /* Styles */
+    .col-form-label {
+        color: rgb(52, 50, 75) !important;
+        font-size: 3vw !important;
+        width: 50% !important;
     }
-    
-    /* Samsung Galaxy S4 ----------- */
-    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-    /* Styles */
-    }
-    
-    @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-    /* Styles */
-    }
-    
-    /* Samsung Galaxy S5 ----------- */
-    @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-    /* Styles */
-    
-
-    }
-    
-    
-    @media only screen and (min-device-width: 360px) and (max-device-height: 670px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-    /* Styles */
-    ul{
-        top: 60px;
-        background-color: #3a3f51;
-        width: 100% !important;
-        height: 200px !important;
-        /* position: fixed; */
-        display: block;
-        overflow: hidden;
-        position: static !important;
-        margin: 0 auto !important;
-    }
-
-
-    .nav-modal {
-        display: block;
-        position: relative;
-        /* top: 100px; */
-        width: 100%;
-        background-color: #fafafa;
-        /* color: #3a3f51; */
-        color: #5ab6eb;
-        padding: 0 !important;
-        -webkit-box-shadow: 0 8px 6px -6px #999;
-        -moz-box-shadow: 0 8px 6px -6px #999;
-        box-shadow: 0 8px 6px -6px #999;
-    }
-
-    .main-profile-content {
-        display: block;
-        height: 500px;
-        color: #3a3f51;
-        /* margin-top: 100px !important; */
-        padding: 0px 20px 20px 20px !important;
-        overflow: auto;
-    }
-
-    
-
-    .container-fluid {
-        height: 100%;
-        max-width: 360px !important;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        color: #2e3344;
-        /* padding-top: 40px; */
-    }
-
-    .search-parent {
-        position: relative;
-        margin-bottom: 0;
-        margin-top: 10px;
-    }
-    
-    .search-parent .center-wrapper {
-        position: absolute;
-        left: 50%;
-    }
-    
-    .search-parent .center-wrapper .search-form {
-        position: relative;
-        left: -50%;
-    }
-
-    .find-text {
-        margin-top: 10px;
-    }
-    .search-form {
-        margin: 0 auto;
-        padding: 20px 0 20px 20px !important; 
-        /* font-size: 1.5em; */
-        max-width: 360px;
-        height: 260px;
-        overflow: hidden;
-        background-image: url("../images/steth.jpg") !important;
-        background-size: 100%;
-        background-repeat: no-repeat;     
-    }
-.content {
-    height: 100% !important;
-    padding: 0 !important;
 }
-
-.bio {
-    font-size: 1em;
-    padding: 15px;
-}
-
-.profile-bio {
-    text-align: center;
-    font-size: 1.5em;
-    overflow: scroll;
-}
-
-.card-specialty {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.distance {
-    font-size: 1em;
-    text-align: center;
-}
-
-.profession {
-    font-size: 1em;
-    text-align: center;
-}
-
-.footer {
-    font-size: 1em;
-}
-
-.location {
-    font-size: 1em;
-    color: #000000 !important;
-}
-    
-    button #submit {
-        color: #ffffff !important;
-        background-color: #be91e2;
-        padding: 5px;
-    }
-
-    .search-results {
-        top: 0;
-        display: block;
-        position: absolute;
-        margin: 0 !important;
-        /* overflow: scroll; */
-    }
-    
-    .no-results {
-        font-size: 1.5em;
-    }
-    
-    .results-container {
-        position: relative;
-        top: 260px !important;
-
-    }
-
-    .col-lg-12 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-    
-
-    }
-    
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
@@ -713,7 +272,14 @@
 .container-fluid {
     height: 100%;
     color: #2e3344;
-    padding-top: 80px;
+    padding: 80px 0 0 0 !important;
+    margin: 0 auto !important;
+}
+
+.content {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
 }
 
 .card a {
@@ -823,33 +389,24 @@ button #submit {
     padding: 5px;
 }
 
-.search-parent {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.search-parent .center-wrapper {
-    position: absolute;
-    left: 50%;
-}
-
-.search-parent .center-wrapper .search-form {
-    position: relative;
-    left: -50%;
-}
-
 .search-form {
-    margin: 0 auto;
-    padding: 80px;
+    margin: 0 auto !important;
+    padding: 30px;
+    left: 0 !important;
+    right: 0 !important;
     font-size: 1.5em;
     background-image: url("../images/steth.jpg") !important;
     background-repeat: no-repeat;
+    max-width: 100%;
+}
+
+.center_div {
+    margin: 0 auto;
+    width: 80%;
 }
 
 .search-results {
-    top: 400px;
     display: block;
-    position: absolute;
     margin: 30px !important;
 }
 
@@ -858,8 +415,11 @@ button #submit {
 }
 
 .results-container {
-    position: relative;
-    top: 400px;
+    top: 400px !important;
+    margin-top: 30px !important;
+    padding: 0;
+    right: 0px;
+    left: 0px;
 }
 
 input {
@@ -893,6 +453,9 @@ body {
     background-color: #f6f6f6 !important;
     margin: 0 !important;
     background-size: 25% 25%;
+    min-width: 345px;
+    width: auto !important;
+    width: 345px;
 }
 
 ::selection {
@@ -915,6 +478,8 @@ body {
 
 .specialty {
     color: #000000 !important;
+    font-size: 2vh;
+    width: 100%;
 }
 
 .card-specialty {
@@ -927,6 +492,7 @@ body {
 
 .range {
     color: #000000;
+    font-size: 2vh;
 }
 
 .profile-image {
@@ -946,7 +512,6 @@ body {
 .profile-practice {
     text-align: center !important;
 }
-
 
 .practice-address {
     text-align: center;
@@ -995,8 +560,9 @@ span {
     text-align: center;
 }
 
-label {
+.col-form-label {
     color: rgb(52, 50, 75);
+    font-size: 2vh;
 }
 
 .icons {
@@ -1010,7 +576,15 @@ label {
 
 .modal {
     background-color: rgba(58, 63, 81, .5) !important;
-    min-width: 360px;
+    min-width: 345px !important;
+}
+
+.modal-dialog {
+    min-width: 345px !important;
+}
+
+.modal-content {
+    min-width: 345px !important;
 }
 
 .close {
@@ -1025,13 +599,33 @@ label {
     overflow: auto;
 }
 
+.mobile-main-profile-content {
+    height: 500px;
+    color: #3a3f51;
+    padding: 0px 20px 20px 20px;
+    overflow: auto;
+}
+
 .nav-modal {
     display: inline-block;
+    margin: auto 0;
     width: 100%;
     background-color: #fafafa;
     /* color: #3a3f51; */
     color: #5ab6eb;
     padding: 0px 0px 0px 200px;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+.mobile-nav-modal {
+    display: inline-block;
+    width: 100%;
+    background-color: #fafafa;
+    /* color: #3a3f51; */
+    color: #5ab6eb;
+    padding: 0;
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
@@ -1043,6 +637,13 @@ label {
 
 .modal label {
     color: rgb(117, 107, 185);
+    font-size: 1.3vw;
+}
+
+.bio {
+    text-align: center;
+    font-size: 1em;
+    padding: 15px;
 }
 
 .profile-bio {
@@ -1051,22 +652,25 @@ label {
     overflow: scroll;
 }
 
-.w3-bar .w3-button {
+.bar button {
     white-space: normal;
     background-color: #fafafa;
+    border-radius: 0 !important;
 }
 
-.w3-button:hover {
+button:hover {
     background-color: #3a3f51;
     color: #fafafa !important;
+    border-radius: 0 !important;
 }
 
-.w3-button:focus {
+button:focus {
     background-color: #3a3f51;
     color: #fafafa !important;
+    border-radius: 0 !important;
 }
 
-.w3-bar .w3-bar-item {
+.bar .bar-item {
     padding: 8px 16px;
     float: left;
     width: auto;
