@@ -5,6 +5,7 @@ $(document).ready(function () {
     $(window);
     resizeWindow();
     $(generateDoctorProfile);
+    // $('.ul-mobile').hide();
 });
 
 $(window).resize(function () {
@@ -20,6 +21,11 @@ $(window).resize(function () {
         $('#mobile-practice').show();
         $('.address').hide();
         $('.line').hide();
+        $('ul').hide();
+        $('.mobile-ul').show();
+
+
+
     } else {
         $('#submit').removeClass('btn btn-info btn-sm').addClass('btn btn-info btn-lg');
         $('#submit').removeClass('col-lg-10').addClass('col-lg-12');
@@ -29,6 +35,10 @@ $(window).resize(function () {
         $('#Profile_mobile').hide();
         $('.address').show();
         $('.line').show();
+        $('ul').show();
+        $('.mobile-ul').hide();
+
+
     }
 })
 
@@ -44,6 +54,11 @@ function resizeWindow() {
         $('#mobile-practice').show();
         $('.address').hide();
         $('.line').hide();
+        $('ul').hide();
+        $('.mobile-ul').show();
+        $('.content').removeClass('.center_div')
+
+
     } else {
         $('#submit').removeClass('btn btn-info btn-sm').addClass('btn btn-info btn-lg');
         $('.container-fluid').addClass('clearfix');
@@ -52,6 +67,9 @@ function resizeWindow() {
         $('#Profile_mobile').hide();
         $('.address').show();
         $('.line').show();
+        $('ul').show();
+        $('.mobile-ul').hide();
+
     }
 }
 
