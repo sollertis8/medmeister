@@ -1,4 +1,4 @@
-@media only screen and (max-device-width: 414px) and (orientation: portrait) {
+@media only screen and (max-device-width: 600px) and (orientation: portrait) {
     .mobile-ul {
         top: 60px;
         background-color: #3a3f51 !important;
@@ -7,6 +7,31 @@
         overflow: hidden;
         position: static !important;
         margin: 0 auto !important;
+    }
+    .info-section {
+        color: #ffffff;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #5bc0de;
+    }
+    .info-header {
+        text-align: center !important;
+        font-size: 2em !important;
+    }
+    .doctor-icon {
+        font-size: 4em;
+        text-align: center;
+    }
+    .info-card {
+        display: block;
+        vertical-align: top;
+        width: 100%;
+        padding: 0 20px 20px 20px;
+        margin-top: 50px;
+    }
+    .info-description {
+        font-size: 1.5em;
+        text-align: center;
     }
     .nav-modal {
         display: block;
@@ -28,7 +53,7 @@
     }
     .container-fluid {
         height: 100%;
-        max-width: 550px !important;
+        max-width: 600px !important;
         overflow-x: hidden;
         overflow-y: scroll;
         color: #2e3344;
@@ -44,8 +69,8 @@
     .search-form {
         margin: 0 auto !important;
         padding: 20px 0 20px 20px !important;
-        max-width: 550px;
-        min-width: 515px !important;
+        /* max-width: 550px; */
+        /* min-width: 515px !important; */
         height: 260px;
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
@@ -107,7 +132,7 @@
         padding-right: 0 !important;
     }
     .specialty {
-        color: #000000 !important;
+        color: #5bc0de !important;
         font-size: 3vw !important;
         width: 40% !important;
     }
@@ -122,7 +147,7 @@
     }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
     /* Styles */
     .mobile-ul {
         top: 60px;
@@ -132,6 +157,11 @@
         overflow: hidden;
         position: static !important;
         margin: 0 auto !important;
+    }
+    .center_div {
+        margin: 0 auto;
+        text-align: center !important;
+        width: 70% !important;
     }
     .nav-modal {
         display: block;
@@ -155,7 +185,7 @@
     }
     .container-fluid {
         height: 100%;
-        max-width: 550px !important;
+        max-width: 600px !important;
         overflow-x: hidden;
         overflow-y: scroll;
         color: #2e3344;
@@ -168,13 +198,14 @@
     }
     .find-text {
         margin-top: 10px;
+        width: 100% !important;
     }
     .search-form {
         margin: 0 auto;
-        padding: 20px 0 20px 20px !important;
+        padding: 20px 0 20px 0 !important;
         width: 100% !important;
-        min-width: 515px !important;
-        height: 260px;
+        /* min-width: 350px !important; */
+        /* height: 100%; */
         overflow: hidden;
         background-image: url("../images/steth.jpg") !important;
         background-size: 100%;
@@ -230,9 +261,9 @@
         padding-right: 0 !important;
     }
     .specialty {
-        color: #000000 !important;
+        color: #5bc0de !important;
         font-size: 3vw !important;
-        width: 40% !important;
+        /* width: 40% !important; */
     }
     .range {
         color: #000000;
@@ -242,6 +273,35 @@
         color: rgb(52, 50, 75) !important;
         font-size: 3vw !important;
         width: 50% !important;
+    }
+    .info-section {
+        color: #ffffff;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #5bc0de;
+        text-align: center;
+        /* margin: 0 auto; */
+        width: 100% !important;
+    }
+    .info-header {
+        text-align: center !important;
+        font-size: 2em !important;
+    }
+    .doctor-icon {
+        font-size: 4em;
+        text-align: center;
+    }
+    .info-card {
+        display: block !important;
+        vertical-align: top;
+        width: 100% !important;
+        padding: 0 20px 20px 20px;
+        margin: 0 auto;
+    }
+    .info-description {
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
     }
 }
 
@@ -274,6 +334,7 @@
     color: #2e3344;
     padding: 80px 0 0 0 !important;
     margin: 0 auto !important;
+    /* background-color: #5bc0de; */
 }
 
 .content {
@@ -390,19 +451,22 @@ button #submit {
 }
 
 .search-form {
-    margin: 0 auto !important;
-    padding: 30px;
-    left: 0 !important;
-    right: 0 !important;
+    /* margin: 0 auto !important; */
+    text-align: center !important;
+    padding: 40px;
+    /* left: 0 !important;
+    right: 0 !important; */
     font-size: 1.5em;
     background-image: url("../images/steth.jpg") !important;
+    background-size: 100%;
     background-repeat: no-repeat;
     max-width: 100%;
 }
 
 .center_div {
     margin: 0 auto;
-    width: 80%;
+    text-align: center !important;
+    width: 30%;
 }
 
 .search-results {
@@ -420,6 +484,7 @@ button #submit {
     padding: 0;
     right: 0px;
     left: 0px;
+    height: 100%;
 }
 
 input {
@@ -477,9 +542,11 @@ body {
 }
 
 .specialty {
-    color: #000000 !important;
-    font-size: 2vh;
+    color: #5bc0de;
+    font-size: 3vh;
     width: 100%;
+    float: right !important;
+    padding-bottom: 10px !important;
 }
 
 .card-specialty {
@@ -491,8 +558,11 @@ body {
 }
 
 .range {
-    color: #000000;
-    font-size: 2vh;
+    color: #5bc0de;
+    font-size: 3vh;
+    width: 100%;
+    float: right !important;
+    padding-bottom: 40px !important;
 }
 
 .profile-image {
@@ -561,8 +631,10 @@ span {
 }
 
 .col-form-label {
-    color: rgb(52, 50, 75);
+    color: #5bc0de;
     font-size: 2vh;
+    display: inline-block !important;
+    float: left !important;
 }
 
 .icons {
@@ -695,7 +767,78 @@ button:focus {
 }
 
 .find-text {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     text-align: center;
+    color: #5bc0de;
+    padding-bottom: 40px;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.info-section {
+    color: #ffffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #5bc0de;
+}
+
+.info-header {
+    text-align: center !important;
+    font-size: 2em !important;
+}
+
+.doctor-icon {
+    font-size: 4em;
+    text-align: center;
+}
+
+.info-card {
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+    padding: 0 20px 20px 20px;
+    margin-top: 50px;
+}
+
+.info-description {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 200px;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #be91e2;
+    border-radius: 50%;
+    border-top: 16px solid #5bc0de;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
