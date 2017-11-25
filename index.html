@@ -34,7 +34,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="css/rotating-card.css" rel="stylesheet" />
     <link rel="stylesheet" href="jquery-shorten-js/dist/css/shorten.css">
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/icons.css" />
@@ -113,7 +113,6 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
-
                 <div class="main-profile-content">
                     <div id="Bio" class="profile-tab">
                         <h2>Bio</h2>
@@ -171,57 +170,71 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid center_div">
-        <div class="content clearfix">
-
-            <div class="find-text">Find the right doctor for you!</div>
-
+    <div class="container-fluid">
+        <form class="search-form js-search-form" action="#">
             <div class="center_div">
-                <form class="search-form js-search-form" action="#">
-                    <div class="form-group row">
-                        <!-- <p> -->
-                        <label for="specialty" class="col-sm-4 col-form-label">Select Specialty: </label>
-                        <div class="col-sm-10">
-                            <select required class="specialty js-specialty"></select>
-                        </div>
-
+                <div class="find-text">Find
+                    <i class="white">your</i> doctor!</div>
+                <div class="form-group row">
+                    <select required class="specialty js-specialty"></select>
+                </div>
+                <div class="form-group row">
+                    <select required class="range js-range">
+                        <option disabled selected>Select a Range</option>
+                        <option value="10">Within 10 Miles</option>
+                        <option value="15">Within 15 Miles</option>
+                        <option value="20">Within 20 Miles</option>
+                        <option value="25">Within 25 Miles</option>
+                        <option value="30">Within 30 Miles</option>
+                        <option value="35">Within 35 Miles</option>
+                        <option value="40">Within 40 Miles</option>
+                        <option value="45">Within 45 Miles</option>
+                        <option value="50">Within 50 Miles</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-12">
+                        <button type="submit" id="submit" class="btn btn-info btn-lg">
+                            <i class="fa fa-binoculars" aria-hidden="true"></i> Find a Doctor</button>
                     </div>
-                    <!-- <p>
-                <label for="insurance">Select Insurance Plan: </label>
-                <select required class="insurance js-insurance">
-                </select>
-            </p> -->
-                    <div class="form-group row">
-
-                        <label for="range" class="col-sm-4 col-form-label">Select Range: </label>
-                        <div class="col-sm-10">
-                            <select required class="range js-range">
-                                <option selected value="10">Within 10 Miles</option>
-                                <option value="15">Within 15 Miles</option>
-                                <option value="20">Within 20 Miles</option>
-                                <option value="25">Within 25 Miles</option>
-                                <option value="30">Within 30 Miles</option>
-                                <option value="35">Within 35 Miles</option>
-                                <option value="40">Within 40 Miles</option>
-                                <option value="45">Within 45 Miles</option>
-                                <option value="50">Within 50 Miles</option>
-                            </select>
-                        </div>
-                        <!-- </p> -->
-                    </div>
-                    <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" id="submit" class="btn btn-info btn-lg">
-                                <i class="fa fa-binoculars" aria-hidden="true"></i> Find a Doctor</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
-
-            <div class="results-container">
+        </form>
+        <div class="info-section">
+            <div class="info-header">Find a doctor that's right for you!</div>
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-user-md"></i>
+                </div>
+                <div class="info-description">
+                    Find a doctor that fits your needs
+                    <p>Search by specialty</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-address-card"></i>
+                </div>
+                <div class="info-description">
+                    <p>Get a doctor's bio, practice, and insurance accepted</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="info-description">
+                    Find a doctor near you
+                    <p>Get results based on your location</p>
+                </div>
+            </div>
+        </div>
+        <div class="results-container js-results-container">
+            <div class="content clearfix">
                 <div class="col-lg-12">
                     <section>
                         <div class="search-resuts js-search-results">
+                            <div class="loading"></div>
                         </div>
                     </section>
                     <section>
@@ -231,8 +244,6 @@
             </div>
         </div>
     </div>
-    <!-- </div>
-        </div> -->
     <script src="js/main.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBdA5jn98M9oGqcPbAq5oFi0U5nQPKJ0&callback=initMap"
         type="text/javascript"></script>
