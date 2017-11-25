@@ -146,7 +146,7 @@ function getDataFromApi(specialty, user_location, location, callback) {
             user_location: `${user_location}`,
             location: `${location}`,
             skip: '0',
-            limit: '15',
+            limit: '50',
             user_key: 'ca6c55cccdb1c2084039aeadd09f13b3',
         },
         url: 'https://api.betterdoctor.com/2016-03-01/doctors',
