@@ -1,0 +1,482 @@
+@media only screen and (max-width: 375px) and (orientation: portrait) {
+    body {
+        max-width: 375px !important;
+        /* overflow: hidden; */
+    }
+
+    .mobile-ul {
+        top: 60px;
+        background-color: #3a3f51 !important;
+        width: 100% !important;
+        height: 200px !important;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+    .info-section {
+        color: #ffffff;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #5bc0de;
+    }
+    .info-header {
+        text-align: center !important;
+        font-size: 2em !important;
+    }
+    .doctor-icon {
+        font-size: 4em;
+        text-align: center;
+    }
+    .info-card {
+        display: block;
+        vertical-align: top;
+        width: 100%;
+        padding: 0 20px 20px 20px;
+        margin-top: 50px;
+    }
+    .info-description {
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .nav-modal {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: #fafafa;
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+    .container-fluid {
+        height: 100%;
+        max-width: 600px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+    }
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    .find-text {
+        margin-top: 10px;
+    }
+    .search-form {
+        margin: 0 auto !important;
+        padding: 20px 0 20px 20px !important;
+        /* max-width: 550px; */
+        /* min-width: 515px !important; */
+        height: 260px;
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .content {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .bio {
+        text-align: center !important;
+        font-size: 1em;
+        padding: 15px;
+    }
+    .profile-bio {
+        text-align: center;
+        font-size: 1.5em;
+        overflow: scroll;
+    }
+    .card-specialty {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+    .distance {
+        font-size: 1em;
+        text-align: center;
+    }
+    .profession {
+        font-size: 1em;
+        text-align: center;
+    }
+    .footer {
+        font-size: 1em;
+    }
+    .location {
+        font-size: 1em;
+        color: #000000 !important;
+    }
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+    .search-results {
+        display: block;
+        position: relative;
+        margin: 0 !important;
+    }
+    .no-results {
+        font-size: 1.5vw;
+    }
+    .results-container {
+        position: absolute;
+        top: 0 !important;
+    }
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .specialty {
+        color: #5bc0de !important;
+        font-size: 3vw !important;
+        width: 40% !important;
+    }
+    .range {
+        color: #000000;
+        font-size: 3vw !important;
+    }
+    .col-form-label {
+        color: rgb(52, 50, 75) !important;
+        font-size: 3vw !important;
+        width: 50% !important;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    /* Styles */
+
+    body {
+        max-width: 667px !important;
+        overflow: hidden;
+    }
+    .mobile-ul {
+        top: 60px;
+        background-color: #3a3f51 !important;
+        width: 100% !important;
+        height: 200px !important;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+    .center_div {
+        margin: 0 auto;
+        text-align: center !important;
+        width: 70% !important;
+    }
+    .nav-modal {
+        display: block;
+        position: relative;
+        /* top: 100px; */
+        width: 100%;
+        background-color: #fafafa;
+        /* color: #3a3f51; */
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+    .container-fluid {
+        height: 100%;
+        max-width: 600px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+    }
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+        width: 100%
+    }
+    .find-text {
+        margin-top: 10px;
+        width: 100% !important;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 20px 0 !important;
+        width: 100% !important;
+        /* min-width: 350px !important; */
+        /* height: 100%; */
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .content {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .bio {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+    .profile-bio {
+        text-align: center;
+        font-size: 1.5em;
+        overflow: scroll;
+    }
+    .card-specialty {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+    .distance {
+        font-size: 1em;
+        text-align: center;
+    }
+    .profession {
+        font-size: 1em;
+        text-align: center;
+    }
+    .footer {
+        font-size: 1em;
+    }
+    .location {
+        font-size: 1em;
+        color: #000000 !important;
+    }
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+    .search-results {
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+    }
+    .no-results {
+        font-size: 1.5vw;
+    }
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .specialty {
+        color: #5bc0de !important;
+        font-size: 3vw !important;
+        /* width: 40% !important; */
+    }
+    .range {
+        color: #000000;
+        font-size: 3vw !important;
+    }
+    .col-form-label {
+        color: rgb(52, 50, 75) !important;
+        font-size: 3vw !important;
+        width: 50% !important;
+    }
+    .info-section {
+        color: #ffffff;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #5bc0de;
+        text-align: center;
+        /* margin: 0 auto; */
+        width: 100% !important;
+    }
+    .info-header {
+        text-align: center !important;
+        font-size: 2em !important;
+    }
+    .doctor-icon {
+        font-size: 4em;
+        text-align: center;
+    }
+    .info-card {
+        display: block !important;
+        vertical-align: top;
+        width: 100% !important;
+        padding: 0 20px 20px 20px;
+        margin: 0 auto;
+    }
+    .info-description {
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 667px) {
+    /* Styles */
+
+    body {
+        max-width: 667px !important;
+        overflow: hidden;
+    }
+
+    .mobile-ul {
+        top: 60px;
+        background-color: #3a3f51 !important;
+        width: 100% !important;
+        height: 200px !important;
+        overflow: hidden;
+        position: static !important;
+        margin: 0 auto !important;
+    }
+    .center_div {
+        margin: 0 auto;
+        text-align: center !important;
+        width: 70% !important;
+    }
+    .nav-modal {
+        display: block;
+        position: relative;
+        /* top: 100px; */
+        width: 100%;
+        background-color: #fafafa;
+        /* color: #3a3f51; */
+        color: #5ab6eb;
+        padding: 0 !important;
+        -webkit-box-shadow: 0 8px 6px -6px #999;
+        -moz-box-shadow: 0 8px 6px -6px #999;
+        box-shadow: 0 8px 6px -6px #999;
+    }
+    .main-profile-content {
+        display: block;
+        height: 500px;
+        color: #3a3f51;
+        padding: 0px 20px 20px 20px !important;
+        overflow: auto;
+    }
+    .container-fluid {
+        height: 100%;
+        max-width: 667px !important;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        color: #2e3344;
+    }
+    .search-parent {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 10px;
+        width: 100%
+    }
+    .find-text {
+        margin-top: 10px;
+        width: 100% !important;
+    }
+    .search-form {
+        margin: 0 auto;
+        padding: 20px 0 20px 0 !important;
+        width: 100% !important;
+        /* min-width: 350px !important; */
+        /* height: 100%; */
+        overflow: hidden;
+        background-image: url("../images/steth.jpg") !important;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .content {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .bio {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+    .profile-bio {
+        text-align: center;
+        font-size: 1.5em;
+        overflow: scroll;
+    }
+    .card-specialty {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+    .distance {
+        font-size: 1em;
+        text-align: center;
+    }
+    .profession {
+        font-size: 1em;
+        text-align: center;
+    }
+    .footer {
+        font-size: 1em;
+    }
+    .location {
+        font-size: 1em;
+        color: #000000 !important;
+    }
+    button #submit {
+        color: #ffffff !important;
+        background-color: #be91e2;
+        padding: 5px;
+    }
+    .search-results {
+        display: block;
+        position: absolute;
+        margin: 0 !important;
+    }
+    .no-results {
+        font-size: 1.5vw;
+    }
+    .col-lg-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .specialty {
+        color: #5bc0de !important;
+        font-size: 3vw !important;
+        /* width: 40% !important; */
+    }
+    .range {
+        color: #000000;
+        font-size: 3vw !important;
+    }
+    .col-form-label {
+        color: rgb(52, 50, 75) !important;
+        font-size: 3vw !important;
+        width: 50% !important;
+    }
+    .info-section {
+        color: #ffffff;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #5bc0de;
+        text-align: center;
+        /* margin: 0 auto; */
+        width: 100% !important;
+    }
+    .info-header {
+        text-align: center !important;
+        font-size: 2em !important;
+    }
+    .doctor-icon {
+        font-size: 4em;
+        text-align: center;
+    }
+    .info-card {
+        display: block !important;
+        vertical-align: top;
+        width: 100% !important;
+        padding: 0 20px 20px 20px;
+        margin: 0 auto;
+    }
+    .info-description {
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+    }
+}
