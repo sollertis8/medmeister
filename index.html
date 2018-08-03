@@ -34,7 +34,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="css/rotating-card.css" rel="stylesheet" />
     <link rel="stylesheet" href="jquery-shorten-js/dist/css/shorten.css">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/icons.css" />
@@ -59,6 +59,7 @@
                             <div class="profile-name js-profile-name"></div>
                             <div class="profile-title js-profile-title"></div>
                         </section>
+
                         <div class="line"></div>
                         <div class="practice">
                             <div class="icons">
@@ -95,18 +96,64 @@
                             <span class="profile-contact js-profile-contact"></span>
                         </section>
                     </ul>
+                    <div class="mobile-ul">
+                        <section>
+                            <div class="profile-image js-profile-image"></div>
+                            <div class="profile-name js-profile-name"></div>
+                            <div class="profile-title js-profile-title"></div>
+                        </section>
+                    </div>
                 </navbar-header>
                 <div class="nav-modal">
-                    <div class="w3-bar w3-black">
-                        <button class="w3-bar-item w3-button" onclick="openTab('Bio')" autofocus="true">Bio</button>
-                        <button class="w3-bar-item w3-button" onclick="openTab('Insurance_Accepted')">Insurance Accepted</button>
-                        <button class="w3-bar-item w3-button" id="map-button" onclick="openTab('profile-map')">Map</button>
+                    <div class="bar black">
+                        <button class="bar-item button" onclick="openTab('Bio')" autofocus="true">Bio</button>
+                        <button class="bar-item button" id="mobile-practice" onclick="openTab('Practice_mobile')">Practice</button>
+                        <button class="bar-item button" onclick="openTab('Insurance_Accepted')">Insurance Accepted</button>
+                        <button class="bar-item button" id="map-button" onclick="openTab('profile-map')">Map</button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
                 <div class="main-profile-content">
                     <div id="Bio" class="profile-tab">
                         <h2>Bio</h2>
                         <div class="profile-bio js-profile-bio"></div>
+                    </div>
+                    <div id="Practice_mobile" class="profile-tab" style="display:none">
+                        <h2>Practice</h2>
+                        <div class="mobile-practice">
+                            <div class="icons">
+                                <i class="glyphicon glyphicon-th" style="color: rgb(59, 165, 207)">
+                                </i>
+                            </div>
+                            <p>
+                                <label for="profile-practice">Practice</label>
+                                <div class="profile-practice js-profile-practice"></div>
+                            </p>
+                        </div>
+                        <div class="mobile-line"></div>
+                        <section class="mobile-address js-mobile-address">
+                            <p>
+                                <div class="icons">
+                                    <i class="glyphicon glyphicon-home" style="color: rgb(59, 165, 207)">
+                                    </i>
+                                </div>
+                                <label for="mobile-address">Address</label>
+                            </p>
+                            <span class="practice-address js-practice-address"></span>
+                            <div class="practice-address2 js-practice-address2"></div>
+                            <span class="practice-city js-practice-city"></span>
+                            <span class="practice-state js-practice-state"></span>
+                            <span class="practice-zip js-practice-zip"></span>
+                            <div class="mobile-line"></div>
+                            <div class="icons">
+                                <i class="glyphicon glyphicon-phone" style="color: rgb(59, 165, 207)">
+                                </i>
+                            </div>
+                            <p>
+                                <label for="profile-contact">Phone</label>
+                            </p>
+                            <span class="profile-contact js-profile-contact"></span>
+                        </section>
                     </div>
                     <div id="Insurance_Accepted" class="profile-tab" style="display:none">
                         <div class="profile-insurance js-profile-insurance"></div>
@@ -116,51 +163,78 @@
                         <div id="map_canvas">
                             <div id="map" class="profile-map js-profile-map"></div>
                         </div>
+                        <div class="doctor_distance js-doctor-distance"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="content clearfix">
-            <p>
-                <h2>Find the right doctor for you!</h2>
-                <div class="search-parent">
-                    <div class="center-wrapper">
-                        <form class="search-form js-search-form" action="#">
-
-                            <label for="specialty">Select Specialty: </label>
-                            <select required class="specialty js-specialty">
-                            </select>
-            </p>
-            <p>
-                <label for="insurance">Select Insurance Plan: </label>
-                <select required class="insurance js-insurance">
-                </select>
-            </p>
-            <p>
-                <label for="range">Select Range: </label>
-                <select required class="range js-range">
-                    <option selected value="10">Within 10 Miles</option>
-                    <option value="15">Within 15 Miles</option>
-                    <option value="20">Within 20 Miles</option>
-                    <option value="25">Within 25 Miles</option>
-                    <option value="30">Within 30 Miles</option>
-                    <option value="35">Within 35 Miles</option>
-                    <option value="40">Within 40 Miles</option>
-                    <option value="45">Within 45 Miles</option>
-                    <option value="50">Within 50 Miles</option>
-                </select>
-            </p>
-            <button type="submit" id="submit" class="btn btn-info btn-lg">
-                <i class="fa fa-binoculars" aria-hidden="true"></i> Find a Doctor</button>
-            </form>
+        <form class="search-form js-search-form" action="#">
+            <div class="center_div">
+                <div class="find-text">Find
+                    <i class="white">your</i> doctor!</div>
+                <div class="form-group row">
+                    <select required class="specialty js-specialty"></select>
+                </div>
+                <div class="form-group row">
+                    <select required class="range js-range">
+                        <option disabled selected>Select a Range</option>
+                        <option value="10">Within 10 Miles</option>
+                        <option value="15">Within 15 Miles</option>
+                        <option value="20">Within 20 Miles</option>
+                        <option value="25">Within 25 Miles</option>
+                        <option value="30">Within 30 Miles</option>
+                        <option value="35">Within 35 Miles</option>
+                        <option value="40">Within 40 Miles</option>
+                        <option value="45">Within 45 Miles</option>
+                        <option value="50">Within 50 Miles</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-12">
+                        <button type="submit" id="submit" class="btn btn-info btn-lg">
+                            <i class="fa fa-binoculars" aria-hidden="true"></i> Find a Doctor</button>
+                    </div>
+                </div>
             </div>
+        </form>
+        <div class="info-section">
+            <div class="info-header">Find a doctor that's right for you!</div>
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-user-md"></i>
+                </div>
+                <div class="info-description">
+                    Find a doctor that fits your needs
+                    <p>Search by specialty</p>
+                </div>
             </div>
-            <div class="results-container">
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-address-card"></i>
+                </div>
+                <div class="info-description">
+                    <p>Get a doctor's bio, practice, and insurance accepted</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="doctor-icon">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="info-description">
+                    Find a doctor near you
+                    <p>Get results based on your location</p>
+                </div>
+            </div>
+        </div>
+        <div class="results-container js-results-container">
+            <div class="content clearfix">
                 <div class="col-lg-12">
                     <section>
                         <div class="search-resuts js-search-results">
+                            <div class="loading"></div>
                         </div>
                     </section>
                     <section>
@@ -168,10 +242,12 @@
                     </section>
                 </div>
             </div>
-            <script src="js/main.js"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBdA5jn98M9oGqcPbAq5oFi0U5nQPKJ0&callback=initMap"
-                type="text/javascript"></script>
-            <script src="jquery-shorten-js/dist/jquery-shorten.js"></script>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBdA5jn98M9oGqcPbAq5oFi0U5nQPKJ0&callback=initMap"
+        type="text/javascript"></script>
+    <script src="jquery-shorten-js/dist/jquery-shorten.js"></script>
 </body>
 
 </html>
