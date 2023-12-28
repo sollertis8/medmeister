@@ -152,6 +152,10 @@ function getDataFromApi(specialty, user_location, location, callback) {
         url: 'https://api.betterdoctor.com/2016-03-01/doctors',
         dataType: 'json',
         type: 'GET',
+        CORS: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         success: callback
     };
     $.ajax(settings)
@@ -166,6 +170,10 @@ function getDoctor(uid, callback) {
         url: `https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
         dataType: 'json',
         type: 'GET',
+        CORS: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         success: callback
     };
     $.ajax(settings)
