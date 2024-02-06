@@ -155,16 +155,15 @@ function getDataFromApi(specialty, user_location, location, callback) {
       location: `${location}`,
       skip: "0",
       limit: "50",
-      user_key: "ca6c55cccdb1c2084039aeadd09f13b3",
+      //   user_key: "ca6c55cccdb1c2084039aeadd09f13b3",
     },
     url: "https://cors-anywhere.herokuapp.com/https://api.betterdoctor.com/2016-03-01/doctors",
     dataType: "json",
     type: "GET",
     CORS: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
+      "X-RapidAPI-Key": "b5f557e1a6msh6c9b1084a34d111p1d8e70jsna7a7f5a1da6f",
+      "X-RapidAPI-Host": "betterdoctor.p.rapidapi.com",
     },
     withCredentials: true,
     credentials: "same-origin",
@@ -176,17 +175,16 @@ function getDataFromApi(specialty, user_location, location, callback) {
 // get doctor data from api for profile
 function getDoctor(uid, callback) {
   const settings = {
-    data: {
-      user_key: "ca6c55cccdb1c2084039aeadd09f13b3",
-    },
+    // data: {
+    //   user_key: "ca6c55cccdb1c2084039aeadd09f13b3",
+    // },
     url: `https://cors-anywhere.herokuapp.com/https://api.betterdoctor.com/2016-03-01/doctors/${uid}`,
     dataType: "json",
     type: "GET",
     CORS: true,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
+      "X-RapidAPI-Key": "b5f557e1a6msh6c9b1084a34d111p1d8e70jsna7a7f5a1da6f",
+      "X-RapidAPI-Host": "betterdoctor.p.rapidapi.com",
     },
     withCredentials: true,
     credentials: "same-origin",
