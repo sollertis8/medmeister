@@ -161,7 +161,7 @@ function getDataFromApi(specialty, user_location, location, callback) {
     $.ajax(settings)
 }
 
-// get individual doctor data from api for profile
+// get doctor data from api for profile
 function getDoctor(uid, callback) {
     const settings = {
         data: {
