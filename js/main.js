@@ -166,6 +166,8 @@ function getDataFromApi(specialty, user_location, location, callback) {
       "Content-Type": "application/json",
       "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
     },
+    withCredentials: true,
+    credentials: "same-origin",
     success: callback,
   };
   $.ajax(settings);
@@ -186,6 +188,8 @@ function getDoctor(uid, callback) {
       "Content-Type": "application/json",
       "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
     },
+    withCredentials: true,
+    credentials: "same-origin",
     success: callback,
   };
   $.ajax(settings);
